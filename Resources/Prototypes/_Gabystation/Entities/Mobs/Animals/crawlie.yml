@@ -80,6 +80,6 @@
     - type: Bloodstream
       bloodMaxVolume: 300
       bloodReagent: Haloperidol
-    - type: Fauna 
+    - type: Fauna
     - type: CombatPower
       factor: 2

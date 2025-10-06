@@ -13,9 +13,6 @@
     params:
       loop: true
       volume: -5
-  damage:
-    types:
-      Radiation: 1
 
 - type: weather
   id: FaithlessStaticMedium
@@ -27,9 +24,6 @@
     params:
       loop: true
       volume: -6
-  damage:
-    types:
-      Radiation: 3
 
 - type: weather
   id: FaithlessStaticHeavy
@@ -41,9 +35,6 @@
     params:
       loop: true
       volume: -8
-  damage:
-    types:
-      Radiation: 5
 
 - type: weather
   id: FaithlessHell
@@ -54,11 +45,7 @@
     path: /Audio/_Gabystation/Effects/Weather/faithless_hell.ogg
     params:
       loop: true
-      volume: -5
-  damage:
-    types:
-      Heat: 10
-      Radiation: 6
+      volume: -10
       
 - type: weather
   id: FaithlessHell_SoundAlt
@@ -70,7 +57,3 @@
     params:
       loop: true
       volume: -5
-  damage:
-    types:
-      Heat: 10
-      Radiation: 6
