@@ -30,10 +30,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
     [GenerateTypedNameReferences]
     public sealed partial class GhostTargetWindow : DefaultWindow
     {
-        private List<(string, NetEntity)> Antagonist_warps = new();
-        private List<(string, NetEntity)> Living_warps = new();
-        private List<(string, NetEntity)> Ghost_warps = new();
-        private List<(string, NetEntity)> Misc_warps = new();
+        private List<(string, NetEntity, int)> Warps = new();
         private string _searchText = string.Empty;
 
         public event Action<NetEntity>? WarpClicked;
@@ -47,35 +44,34 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
             GhostnadoButton.OnPressed += _ => OnGhostnadoClicked?.Invoke();
         }
 
-        public void UpdateWarps(IEnumerable<GhostWarp> warps)
+        public void UpdateWarps(IEnumerable<GhostWarp> _warps)
         {
-            Antagonist_warps = [];
-            Living_warps = [];
-            Ghost_warps = [];
-            Misc_warps = [];
-            foreach(GhostWarp point in warps)
+            Warps = [];
+            foreach(GhostWarp warp in _warps)
             {
-                if (point.Mob)
+                var name = "";
+                var type = 0; // Magic numbers my beloved
+                if (warp.Mob)
                 {
-                    var name = point.DisplayName + (point.Followers > 0 ? " f: " + point.Followers : "");
-                    if (point.Antagonist)
+                    name = warp.DisplayName + (warp.Followers > 0 ? " f: " + warp.Followers : "");
+                    if (warp.Antagonist)
                     {
-                        Antagonist_warps.Add((name, point.Entity));
+                        type = 1;
                     }
-                    else if(!point.Player_ghost)
+                    else if(!warp.Player_ghost)
                     {
-                        Living_warps.Add((name, point.Entity));
+                        type = 2;
                     }
                     else
                     {
-                        Ghost_warps.Add((name, point.Entity));
+                        type = 3;
                     }
                 }
                 else
                 {
-                    var name = Loc.GetString("ghost-target-window-current-button", ("name", point.DisplayName));
-                    Misc_warps.Add((name, point.Entity));
+                    name = Loc.GetString("ghost-target-window-current-button", ("name", warp.DisplayName));
                 }
+                Warps.Add((name, warp.Entity, type));
             }
         }
 
@@ -90,55 +86,11 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
 
         private void AddButtons()
         {
-            var total_antagonist_length = 0; // No we can't just set it as .length
-            foreach (var (name, warpTarget) in Antagonist_warps)
-            {
-                var currentButtonRef = new Button
-                {
-                    Text = name,
-                    TextAlign = Label.AlignMode.Right,
-                    HorizontalAlignment = HAlignment.Left,
-                    VerticalAlignment = VAlignment.Top,
-                    SizeFlagsStretchRatio = 1,
-                    MinSize = new Vector2(20, 20),
-                };
-
-                currentButtonRef.OnPressed += _ => WarpClicked?.Invoke(warpTarget);
-                currentButtonRef.Visible = ButtonIsVisible(currentButtonRef);
-                if(currentButtonRef.Visible)
-                {
-                    total_antagonist_length++;
-                }
-
-                AntagonistContainer.AddChild(currentButtonRef);
-            }
-            AntagonistHeading.Title = "Antagonists - (" + total_antagonist_length + ")";
-            AntagBox.Visible = total_antagonist_length > 0 ? true : false;
+            var total_antagonist_length = 0;
             var total_living_length = 0;
-            foreach (var (name, warpTarget) in Living_warps)
-            {
-                var currentButtonRef = new Button
-                {
-                    Text = name,
-                    TextAlign = Label.AlignMode.Right,
-                    HorizontalAlignment = HAlignment.Left,
-                    VerticalAlignment = VAlignment.Top,
-                    SizeFlagsStretchRatio = 1,
-                    MinSize = new Vector2(20, 20),
-                };
-
-                currentButtonRef.OnPressed += _ => WarpClicked?.Invoke(warpTarget);
-                currentButtonRef.Visible = ButtonIsVisible(currentButtonRef);
-                if(currentButtonRef.Visible)
-                {
-                    total_living_length++;
-                }
-
-                LivingContainer.AddChild(currentButtonRef);
-            }
-            LivingHeading.Title = "Alive - (" + total_living_length + ")";
             var total_ghost_length = 0;
-            foreach (var (name, warpTarget) in Ghost_warps)
+            var total_misc_length = 0;
+            foreach (var (name, Entity, type) in Warps)
             {
                 var currentButtonRef = new Button
                 {
@@ -149,40 +101,34 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
                     SizeFlagsStretchRatio = 1,
                     MinSize = new Vector2(20, 20),
                 };
-
-                currentButtonRef.OnPressed += _ => WarpClicked?.Invoke(warpTarget);
+                currentButtonRef.OnPressed += _ => WarpClicked?.Invoke(Entity);
                 currentButtonRef.Visible = ButtonIsVisible(currentButtonRef);
-                if(currentButtonRef.Visible)
+                switch (type)
                 {
-                    total_ghost_length++;
+                    case 0:
+                        total_misc_length++;
+                        MiscContainer.AddChild(currentButtonRef);
+                        continue;
+                    case 1:
+                        total_antagonist_length++;
+                        AntagonistContainer.AddChild(currentButtonRef);
+                        continue;
+                    case 2:
+                        total_living_length++;
+                        LivingContainer.AddChild(currentButtonRef);
+                        continue;
+                    case 3:
+                        total_ghost_length++;
+                        GhostContainer.AddChild(currentButtonRef);
+                        continue;
                 }
-
-                GhostContainer.AddChild(currentButtonRef);
-            }
-            GhostHeading.Title = "Ghosts - (" + total_ghost_length + ")";
-            var total_misc_length = 0; // No we can't just set it as _warps.length
-            foreach (var (name, warpTarget) in Misc_warps)
-            {
-                var currentButtonRef = new Button
-                {
-                    Text = name,
-                    TextAlign = Label.AlignMode.Right,
-                    HorizontalAlignment = HAlignment.Left,
-                    VerticalAlignment = VAlignment.Top,
-                    SizeFlagsStretchRatio = 1,
-                    MinSize = new Vector2(20, 20),
-                };
-
-                currentButtonRef.OnPressed += _ => WarpClicked?.Invoke(warpTarget);
-                currentButtonRef.Visible = ButtonIsVisible(currentButtonRef);
-                if(currentButtonRef.Visible)
-                {
-                    total_misc_length++;
-                }
-
-                MiscContainer.AddChild(currentButtonRef);
             }
             MiscHeading.Title = "Misc - (" + total_misc_length + ")";
+            AntagonistHeading.Title = "Antagonists - (" + total_antagonist_length + ")";
+            LivingHeading.Title = "Alive - (" + total_living_length + ")";
+            GhostHeading.Title = "Ghosts - (" + total_ghost_length + ")";
+            // Only check this one for visibility, since the others will preety much always be visible
+            AntagBox.Visible = total_antagonist_length > 0;
         }
 
         private bool ButtonIsVisible(Button button)
