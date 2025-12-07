@@ -167,11 +167,14 @@ namespace Content.Shared.Ghost
     [Serializable, NetSerializable]
     public struct GhostWarp
     {
-        public GhostWarp(NetEntity entity, string displayName, bool isWarpPoint)
+        public GhostWarp(NetEntity entity, string displayName, bool mob, bool ghost, bool antagonist, int followers)
         {
             Entity = entity;
             DisplayName = displayName;
-            IsWarpPoint = isWarpPoint;
+            Mob = mob;
+            Player_ghost = ghost;
+            Antagonist = antagonist;
+            Followers = followers;
         }
 
         /// <summary>
@@ -186,9 +189,16 @@ namespace Content.Shared.Ghost
         public string DisplayName { get; }
 
         /// <summary>
-        /// Whether this warp represents a warp point or a player
+        ///     Tags that determine what category this point will go into in the ghost's orbit menu
         /// </summary>
-        public bool IsWarpPoint { get;  }
+        public bool Mob { get;  }
+        public bool Player_ghost { get;  }
+        public bool Antagonist { get;  }
+
+        /// <summary>
+        /// How many followers this person has around them
+        /// </summary>
+        public int Followers { get;  }
     }
 
     /// <summary>

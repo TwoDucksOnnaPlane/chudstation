@@ -30,7 +30,10 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
     [GenerateTypedNameReferences]
     public sealed partial class GhostTargetWindow : DefaultWindow
     {
-        private List<(string, NetEntity)> _warps = new();
+        private List<(string, NetEntity)> Antagonist_warps = new();
+        private List<(string, NetEntity)> Living_warps = new();
+        private List<(string, NetEntity)> Ghost_warps = new();
+        private List<(string, NetEntity)> Misc_warps = new();
         private string _searchText = string.Empty;
 
         public event Action<NetEntity>? WarpClicked;
@@ -46,48 +49,140 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
 
         public void UpdateWarps(IEnumerable<GhostWarp> warps)
         {
-            // Server COULD send these sorted but how about we just use the client to do it instead
-            _warps = warps
-                .OrderBy(w => w.IsWarpPoint)
-                .ThenBy(w => w.DisplayName, Comparer<string>.Create(
-                    (x, y) => string.Compare(x, y, StringComparison.Ordinal)))
-                .Select(w =>
+            Antagonist_warps = [];
+            Living_warps = [];
+            Ghost_warps = [];
+            Misc_warps = [];
+            foreach(GhostWarp point in warps)
+            {
+                if (point.Mob)
                 {
-                    var name = w.IsWarpPoint
-                        ? Loc.GetString("ghost-target-window-current-button", ("name", w.DisplayName))
-                        : w.DisplayName;
-
-                    return (name, w.Entity);
-                })
-                .ToList();
+                    var name = point.DisplayName + (point.Followers > 0 ? " f: " + point.Followers : "");
+                    if (point.Antagonist)
+                    {
+                        Antagonist_warps.Add((name, point.Entity));
+                    }
+                    else if(!point.Player_ghost)
+                    {
+                        Living_warps.Add((name, point.Entity));
+                    }
+                    else
+                    {
+                        Ghost_warps.Add((name, point.Entity));
+                    }
+                }
+                else
+                {
+                    var name = Loc.GetString("ghost-target-window-current-button", ("name", point.DisplayName));
+                    Misc_warps.Add((name, point.Entity));
+                }
+            }
         }
 
         public void Populate()
         {
-            ButtonContainer.DisposeAllChildren();
+            AntagonistContainer.DisposeAllChildren();
+            LivingContainer.DisposeAllChildren();
+            GhostContainer.DisposeAllChildren();
+            MiscContainer.DisposeAllChildren();
             AddButtons();
         }
 
         private void AddButtons()
         {
-            foreach (var (name, warpTarget) in _warps)
+            var total_antagonist_length = 0; // No we can't just set it as .length
+            foreach (var (name, warpTarget) in Antagonist_warps)
             {
                 var currentButtonRef = new Button
                 {
                     Text = name,
                     TextAlign = Label.AlignMode.Right,
-                    HorizontalAlignment = HAlignment.Center,
-                    VerticalAlignment = VAlignment.Center,
+                    HorizontalAlignment = HAlignment.Left,
+                    VerticalAlignment = VAlignment.Top,
                     SizeFlagsStretchRatio = 1,
-                    MinSize = new Vector2(340, 20),
-                    ClipText = true,
+                    MinSize = new Vector2(20, 20),
                 };
 
                 currentButtonRef.OnPressed += _ => WarpClicked?.Invoke(warpTarget);
                 currentButtonRef.Visible = ButtonIsVisible(currentButtonRef);
+                if(currentButtonRef.Visible)
+                {
+                    total_antagonist_length++;
+                }
 
-                ButtonContainer.AddChild(currentButtonRef);
+                AntagonistContainer.AddChild(currentButtonRef);
             }
+            AntagonistHeading.Title = "Antagonists - (" + total_antagonist_length + ")";
+            AntagBox.Visible = total_antagonist_length > 0 ? true : false;
+            var total_living_length = 0;
+            foreach (var (name, warpTarget) in Living_warps)
+            {
+                var currentButtonRef = new Button
+                {
+                    Text = name,
+                    TextAlign = Label.AlignMode.Right,
+                    HorizontalAlignment = HAlignment.Left,
+                    VerticalAlignment = VAlignment.Top,
+                    SizeFlagsStretchRatio = 1,
+                    MinSize = new Vector2(20, 20),
+                };
+
+                currentButtonRef.OnPressed += _ => WarpClicked?.Invoke(warpTarget);
+                currentButtonRef.Visible = ButtonIsVisible(currentButtonRef);
+                if(currentButtonRef.Visible)
+                {
+                    total_living_length++;
+                }
+
+                LivingContainer.AddChild(currentButtonRef);
+            }
+            LivingHeading.Title = "Alive - (" + total_living_length + ")";
+            var total_ghost_length = 0;
+            foreach (var (name, warpTarget) in Ghost_warps)
+            {
+                var currentButtonRef = new Button
+                {
+                    Text = name,
+                    TextAlign = Label.AlignMode.Right,
+                    HorizontalAlignment = HAlignment.Left,
+                    VerticalAlignment = VAlignment.Top,
+                    SizeFlagsStretchRatio = 1,
+                    MinSize = new Vector2(20, 20),
+                };
+
+                currentButtonRef.OnPressed += _ => WarpClicked?.Invoke(warpTarget);
+                currentButtonRef.Visible = ButtonIsVisible(currentButtonRef);
+                if(currentButtonRef.Visible)
+                {
+                    total_ghost_length++;
+                }
+
+                GhostContainer.AddChild(currentButtonRef);
+            }
+            GhostHeading.Title = "Ghosts - (" + total_ghost_length + ")";
+            var total_misc_length = 0; // No we can't just set it as _warps.length
+            foreach (var (name, warpTarget) in Misc_warps)
+            {
+                var currentButtonRef = new Button
+                {
+                    Text = name,
+                    TextAlign = Label.AlignMode.Right,
+                    HorizontalAlignment = HAlignment.Left,
+                    VerticalAlignment = VAlignment.Top,
+                    SizeFlagsStretchRatio = 1,
+                    MinSize = new Vector2(20, 20),
+                };
+
+                currentButtonRef.OnPressed += _ => WarpClicked?.Invoke(warpTarget);
+                currentButtonRef.Visible = ButtonIsVisible(currentButtonRef);
+                if(currentButtonRef.Visible)
+                {
+                    total_misc_length++;
+                }
+
+                MiscContainer.AddChild(currentButtonRef);
+            }
+            MiscHeading.Title = "Misc - (" + total_misc_length + ")";
         }
 
         private bool ButtonIsVisible(Button button)
@@ -97,7 +192,22 @@ namespace Content.Client.UserInterface.Systems.Ghost.Controls
 
         private void UpdateVisibleButtons()
         {
-            foreach (var child in ButtonContainer.Children)
+            foreach (var child in AntagonistContainer.Children)
+            {
+                if (child is Button button)
+                    button.Visible = ButtonIsVisible(button);
+            }
+            foreach (var child in LivingContainer.Children)
+            {
+                if (child is Button button)
+                    button.Visible = ButtonIsVisible(button);
+            }
+            foreach (var child in GhostContainer.Children)
+            {
+                if (child is Button button)
+                    button.Visible = ButtonIsVisible(button);
+            }
+            foreach (var child in MiscContainer.Children)
             {
                 if (child is Button button)
                     button.Visible = ButtonIsVisible(button);

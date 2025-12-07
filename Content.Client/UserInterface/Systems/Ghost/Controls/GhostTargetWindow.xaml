@@ -16,9 +16,40 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         <Button Name="GhostnadoButton" Text="{Loc 'ghost-target-window-warp-to-most-followed'}" HorizontalAlignment="Center" Margin="0 4" />
         <LineEdit Name="SearchBar" PlaceHolder="Search" HorizontalExpand="True" Margin="0 4" />
         <ScrollContainer Name="GhostScroll" VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
-            <BoxContainer Name="ButtonContainer" Orientation="Vertical" VerticalExpand="True" SeparationOverride="5">
-                <!-- Target buttons get added here by code -->
+        <BoxContainer Orientation="Vertical" >
+            <BoxContainer Name="AntagBox" HorizontalExpand="True" >
+                <Collapsible HorizontalExpand="True">
+                    <CollapsibleHeading Name="AntagonistHeading" />
+                    <CollapsibleBody>
+                        <GridContainer Name="AntagonistContainer" MaxGridWidth="440"/> <!-- These contain buttons on runtime-->
+                    </CollapsibleBody>
+                </Collapsible>
             </BoxContainer>
+            <BoxContainer HorizontalExpand="True" >
+                <Collapsible HorizontalExpand="True">
+                    <CollapsibleHeading Name="LivingHeading" />
+                    <CollapsibleBody>
+                        <GridContainer Name="LivingContainer" MaxGridWidth="440"/>
+                    </CollapsibleBody>
+                </Collapsible>
+            </BoxContainer>
+            <BoxContainer HorizontalExpand="True" >
+                <Collapsible HorizontalExpand="True">
+                    <CollapsibleHeading Name="GhostHeading" />
+                    <CollapsibleBody>
+                        <GridContainer Name="GhostContainer" MaxGridWidth="440"/>
+                    </CollapsibleBody>
+                </Collapsible>
+            </BoxContainer>
+            <BoxContainer HorizontalExpand="True" >
+                <Collapsible HorizontalExpand="True">
+                    <CollapsibleHeading Name="MiscHeading" />
+                    <CollapsibleBody>
+                        <GridContainer Name="MiscContainer" MaxGridWidth="440"/>
+                    </CollapsibleBody>
+                </Collapsible>
+            </BoxContainer>
+        </BoxContainer>
         </ScrollContainer>
     </BoxContainer>
 </DefaultWindow>

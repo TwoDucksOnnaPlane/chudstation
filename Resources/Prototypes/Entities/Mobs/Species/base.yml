@@ -514,6 +514,9 @@
   id: BaseMobSpeciesOrganic
   abstract: true
   components:
+  - type: WarpPoint # Rat - Better observe menu
+    follow: true
+    mob: true
   - type: Absorbable # Goobstation - changelings
   - type: WraithAbsorbable # Goobstation - wraith
   - type: Barotrauma
