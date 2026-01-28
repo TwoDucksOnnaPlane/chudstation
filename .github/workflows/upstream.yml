@@ -1,0 +1,32 @@
+name: Pull Upstream and PR
+
+on:
+  schedule:
+    - cron: '0 16 * * *' # Runs every day ay 16:00
+  workflow_dispatch:
+
+jobs:
+  sync-and-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Pull upstream and PR
+        uses: fopina/upstream-to-pr@v1
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          upstream-repository: https://github.com/Goob-Station/Goob-Station.git
+          upstream-branch: master
