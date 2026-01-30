@@ -153,13 +153,14 @@
     children:
     - id: SnakeSpawn
     - id: MalignRiftSpawn # DeltaV
-    - id: FloorGoblinMidRound # Goobstation
-    - id: ClownGoblinMigration # Goobstation - New Midrounds
     - id: RandomSentience
     - id: SlimesSpawn
     - id: MothroachSpawn # DeltaV
     - id: MouseMigration
     - id: VentClog
+    - id: GasLeak
+    - id: IonStorm # its calm like 90% of the time smh
+    - id: CockroachMigration
 
 - type: entityTable
   id: LowImpactAntagTable #Used for SqueakRat modes
@@ -169,18 +170,17 @@
     - id: KingRatMigration
     - id: ParadoxCloneSpawn
     - id: BingleSpawn
-    - id: CockroachMigration
-    - id: GasLeak
-    - id: MouseMigration
-    - id: IonStorm # its calm like 90% of the time smh
+    - id: FloorGoblinMidRound
 
 - type: entityTable
-  id: SusAntagTable #Used for SqueakRat, holds ghostrole antags for now
+  id: SusAntagTable #Used for the antag mode where it could be anyone
   table: !type:AllSelector
     children:
-    - id: Heretics
-    - id: Traitors
-    - id: Changelings
+    - id: Traitor
+    - id:
+    - id: Heretic
+    - id: Changeling
+    - id: SleeperAgents
 
 # Ratbite Over
 

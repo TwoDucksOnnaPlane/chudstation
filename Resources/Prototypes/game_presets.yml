@@ -167,6 +167,7 @@
   description: Nothing ever happens... Unless you (or an admin) make it happen!
   rules:
     - RatbiteBasicEventsScheduler #Ratbite changed
+    - PermaBrig # Needed
 
 - type: gamePreset
   id: Secret
