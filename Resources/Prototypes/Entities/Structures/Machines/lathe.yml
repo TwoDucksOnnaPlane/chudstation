@@ -768,6 +768,8 @@
     - ScienceExplosives
     - GrenadeTriggersStatic
     - SecurityWeaponsStaticGoob
+    # Ratbite
+    - SecurityAmmoRatbiteStatic
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -788,6 +790,9 @@
     # - ServiceWeapons
     - SpecOpsGoogles
     - PowerCells
+    # Ratbite
+    - LegalTechSciSec
+    - SecurityAmmoRatbiteDynamic
   - type: EmagLatheRecipes # Goobstation
     emagStaticPacks:
     - SyndicateAmmoLightStatic
@@ -894,6 +899,8 @@
     # Einstein Engines Packs
     - Translators # Language
     - TranslatorImplanters # Language
+    # Ratbite
+    - LegalTechSciMed
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: EmagLatheRecipes # Goobstation Packs
