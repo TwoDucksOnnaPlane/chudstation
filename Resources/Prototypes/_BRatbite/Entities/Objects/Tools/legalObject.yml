@@ -16,7 +16,7 @@
   id: LegalHypoDart
   name: HypoDart
   suffix: legalTech
-  description: A way to remotely inject chemical into someone. this does not follow the geneva convention.
+  description: A way to remotely inject chemicals into someone. This does not follow the Geneva “suggestions”.
 
 - type: entity
   parent: [SyndiHypo, BaseMajorContraband]
