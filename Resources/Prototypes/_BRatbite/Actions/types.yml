@@ -2,7 +2,7 @@
   parent: BaseAction
   id: ActionActivateLegalFreedomImplant
   name: Break Free
-  description: Activating your freedom implant will free you from any hand restraints
+  description: Activating this implant will free you from any hand restraints.
   components:
   - type: Action
     useDelay: 90 # Goob - useful freedom
