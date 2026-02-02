@@ -37,7 +37,7 @@
   id: LegalSyndieTrickyBomb
   name: trick minibomb
   suffix: legalTech
-  description: Giving heart attack to security since 2025.
+  description: Giving heart-attacks to security since 2025!
   components:
   - type: Contraband
     severity: Major
@@ -104,7 +104,7 @@
   parent: [HighFrequencyBlade, BaseMajorContraband]
   id: LegalHighFrequencyBlade
   name: high frequency blade
-  description: A highly reinforced blade that is vibrating on high frequency allowing it cut in fast pace. Unfortunately due to manufacturing defect the sharpness of the sword is slightly decrease.
+  description: A highly reinforced blade that vibrates at high frequencies allowing it to cut in fast pace. Unfortunately, imperfections during fabrication prevent it from achieving true sharpness.
   suffix: legalTech
   components:
   - type: Contraband
