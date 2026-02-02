@@ -60,7 +60,7 @@
   id: LegalLanternFlash
   name: Ultrabright Lantern
   suffix: legalTech
-  description: A modified lantern that is so bright that it can blind people.
+  description: A modified lantern that’s so bright, it might as well be a flash.
 
 - type: entity # good lord if someone spam this and throw a real disk in it. good fuckin luck.
   parent: NukeDiskFake # hehe fuckin evil
