@@ -49,7 +49,7 @@
   id: LegalThievingGloves
   name: thieving gloves
   suffix: legalTech
-  description: the gloves that make user really good at stealing thing without having anyone notice it.
+  description: these gloves that makes the user exceptionally skilled at stealing off people undetected.
   components:
   - type: Thieving
     stripTimeReduction: 1
