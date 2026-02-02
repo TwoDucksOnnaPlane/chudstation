@@ -67,7 +67,7 @@
   id: LegalFakeNukeDisk
   name: nuclear authentication disk
   suffix: legalTech
-  description: A nuclear auth disk, capable of arming a nuke if used along with a code. Wait a minute, there a small defect on the disk due to manufacturing error.
+  description: A nuclear authentication disk, capable of arming a nuke if used along with a code- Wait a minute, there’s a small defect on the disk due to a misprint…
 
 - type: entity
   parent: [AgentIDCard, BaseMajorContraband]
