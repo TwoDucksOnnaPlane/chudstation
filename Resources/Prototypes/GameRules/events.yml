@@ -177,7 +177,6 @@
   table: !type:AllSelector
     children:
     - id: Traitor
-    - id:
     - id: Heretic
     - id: Changeling
     - id: SleeperAgents
