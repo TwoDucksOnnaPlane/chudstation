@@ -15,6 +15,7 @@
   - LegalAgentIDCard
   - LegalFreedomImplanter
   - DimensionPot
+  - LegalEMAG
 
 - type: latheRecipePack #both sci fab and secfab
   id: LegalTechSciSec

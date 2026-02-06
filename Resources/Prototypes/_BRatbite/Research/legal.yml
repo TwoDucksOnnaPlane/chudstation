@@ -6,12 +6,14 @@
     state: icon
   discipline: LEGAL
   tier: 1
-  cost: 100000
+  cost: 25000
   recipeUnlocks:
   - GrenadeDummy
   - LegalFakeNukeDisk
   - LegalSyndieTrickyBomb
-  position: 8,-2 # Goobstation R&D Console rework
+  position: -6,-6 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - AlternativeResearch
 
 - type: technology
   id: UnnaturalEntrapmentTechnologies
@@ -21,13 +23,14 @@
     state: icon
   discipline: LEGAL
   tier: 1
-  cost: 100000
+  cost: 50000
   recipeUnlocks:
-  - LegalRadioJammer
-  - LegalLanternFlash
   - ReverseBearTrap
   - ReverseBearTrapKey
-  position: 8,-1 # Goobstation R&D Console rework
+  position: -6,-9 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - MechanicalCompression
+  - DecoyTechnologies
 
 - type: technology
   id: PhantomThiefTechnologies
@@ -37,10 +40,14 @@
     state: icon
   discipline: LEGAL
   tier: 1
-  cost: 150000
+  cost: 100000
   recipeUnlocks:
   - LegalThievingGloves
-  position: 8,0 # Goobstation R&D Console rework
+  - DimensionPot
+  position: -6,-8 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - BluespaceTheory
+  - DecoyTechnologies
 
 - type: technology
   id: IDDistruptionTechnologies
@@ -50,13 +57,16 @@
     state: icon
   discipline: LEGAL
   tier: 1
-  cost: 150000
+  cost: 100000
   recipeUnlocks:
   - ClothingUniformJumpsuitChameleon
   - ClothingHeadHatChameleon
   - ClothingMaskGasVoiceChameleon
   - LegalAgentIDCard
-  position: 8,1 # Goobstation R&D Console rework
+  position: -6,-7 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - AdvancedTranslation
+  - DecoyTechnologies
 
 - type: technology
   id: AdvChemManipulationTechnologies
@@ -66,11 +76,15 @@
     state: hypo
   discipline: LEGAL
   tier: 1
-  cost: 150000
+  cost: 75000
   recipeUnlocks:
   - LegalHypoDart
+  - LegalVestineChemistryVial
 #  - LegalHypospray
-  position: 8,2 # Goobstation R&D Console rework
+  position: -6,-10 # Goobstation R&D Console rework
+  technologyPrerequisites:
+  - BluespaceChemistry
+  - DecoyTechnologies
 
 - type: technology
   id: FreedomTechnologies
@@ -80,11 +94,13 @@
     state: freedom
   discipline: LEGAL
   tier: 2
-  cost: 200000
+  cost: 150000
   recipeUnlocks:
+  - LegalEMAG
   - LegalFreedomImplanter
-  - DimensionPot
-  position: 9,0 # Goobstation R&D Console rework
+  - LegalRadioJammer
+
+  position: -7,-8 # Goobstation R&D Console rework
   technologyPrerequisites:
   - IDDistruptionTechnologies
   - PhantomThiefTechnologies
@@ -104,7 +120,7 @@
   recipeUnlocks:
   - LegalHighFrequencyBlade
   - LegalEnergySword
-  position: 10,-2 # Goobstation R&D Console rework
+  position: -8,-10 # Goobstation R&D Console rework
   technologyPrerequisites:
   - FreedomTechnologies
   - HighEndSurgery
@@ -124,7 +140,7 @@
   - LegalC4
   - SeismicCharge
   - LegalEmpGrenade
-  position: 10,-1 # Goobstation R&D Console rework
+  position: -8,-9 # Goobstation R&D Console rework
   technologyPrerequisites:
   - FreedomTechnologies
   - KineticModifications
@@ -145,27 +161,10 @@
   recipeUnlocks:
   - LegalBorgModuleSyndicateWeaponAdvanced
   - LegalBorgModuleMartyr
-  position: 10,0 # Goobstation R&D Console rework
+  position: -8,-8 # Goobstation R&D Console rework
   technologyPrerequisites:
   - FreedomTechnologies
   - PortableMicrofusionWeaponry
   - BasicRobotics
   - Durand
 
-- type: technology
-  id: VestineSysntTechnologies
-  name: research-legal-vestine-technology
-  icon:
-    sprite: Objects/Specific/Chemistry/vial.rsi
-    state: vial-1
-  discipline: LEGAL
-  tier: 3
-  cost: 100000
-  recipeUnlocks:
-  - LegalVestineChemistryVial
-  position: 10,1 # Goobstation R&D Console rework
-  technologyPrerequisites:
-  - FreedomTechnologies
-  - BluespaceChemistry
-  - BiochemicalStasis
-  - RescueTechnology
