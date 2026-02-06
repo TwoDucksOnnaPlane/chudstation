@@ -14,6 +14,17 @@
 
 - type: latheRecipe
   parent: BaseToolRecipe
+  id: LegalEMAG
+  result: Emag
+  materials:
+    Steel: 500
+    Glass: 300
+    Plastic: 200
+    Gold: 100
+    Diamond: 100
+
+- type: latheRecipe
+  parent: BaseToolRecipe
   id: LegalLanternFlash
   result: LegalLanternFlash
   materials:
