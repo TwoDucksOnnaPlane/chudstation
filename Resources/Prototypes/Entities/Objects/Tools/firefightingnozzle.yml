@@ -42,6 +42,7 @@
       - NozzleBackTank
       - AtmosBackTank
   - type: UseDelay # Ratbite nerfs because this shit could instakill all of sec or a nukie team. Whoever thought this was okay must be put into furnace.
+    delay: 0.5
 
   - type: PacifismAllowedGun
   - type: Gun
@@ -60,8 +61,6 @@
     providerWhitelist:
       tags:
       - AtmosBackTank
-  - type: UseDelay
-    delay: 0.5
 
 - type: entity
   parent: [ BaseCivilianContraband, SmokeGrenade ]
