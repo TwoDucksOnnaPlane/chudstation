@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 02/09/2026 12:53:07
-  entityCount: 6897
+  time: 02/09/2026 13:24:58
+  entityCount: 6902
 maps: []
 grids:
 - 1668
@@ -22677,7 +22677,7 @@ entities:
   - uid: 783
     components:
     - type: Transform
-      pos: 26.464178,6.4909782
+      pos: 26.474808,6.5701632
       parent: 1668
     - type: Reflect
       inRightPlace: False
@@ -27474,6 +27474,30 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 12.64972,-5.2817917
       parent: 1668
+- proto: MaterialCotton1
+  entities:
+  - uid: 1927
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 25.691025,6.8806944
+      parent: 1668
+  - uid: 2944
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 26.393726,7.299236
+      parent: 1668
+  - uid: 4705
+    components:
+    - type: Transform
+      pos: 26.569403,6.8941956
+      parent: 1668
+  - uid: 5132
+    components:
+    - type: Transform
+      pos: 25.67751,6.5701632
+      parent: 1668
 - proto: MedalCase
   entities:
   - uid: 6922
@@ -27811,7 +27835,7 @@ entities:
       parent: 1668
     - type: Paper
       content: >-
-        Bradley here, one of the carmilla goes rouge and decided to eat all the plushie in the centcom. yeaa sorry. il repair it later.
+        Bradley here,carmilla goes rouge when they got promoted and decided to eat all the plushie in the centcom. yeaa sorry. il repair it later.
 
         - Bradley Smith, Centcom Engineering Team and CCO
   - uid: 1227
@@ -42085,6 +42109,12 @@ entities:
     components:
     - type: Transform
       pos: 4.5,27.5
+      parent: 1668
+  - uid: 1737
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -12.5,5.5
       parent: 1668
   - uid: 3123
     components:
