@@ -70,3 +70,4 @@
     entityWhitelist:
       components:
       - Slime
+      - Skinnable # suck the monkee - Creatorbot01 #Ratbite
