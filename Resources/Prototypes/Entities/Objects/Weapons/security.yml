@@ -184,6 +184,8 @@
     damage: 25 # Ratbite balance
     lightAttackDamageMultiplier: 1.5 # Ratbite balance
     sound: /Audio/Weapons/egloves.ogg
+  - type: StaminaDamageOnCollide #Ratbite, Re add batong throw because we enjoy skill and fun.
+    damage: 32
   - type: DelayedKnockdownOnHit # Goobstation
     useDelay: stunbaton
   - type: UseDelayBlockMelee # Goobstation
