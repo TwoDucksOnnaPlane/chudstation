@@ -17,6 +17,7 @@ using Content.Shared.Hands;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
+using Content.Shared.Mobs; // Ratbite - Xenovac Nerf
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
@@ -180,8 +181,9 @@ public sealed partial class XenoVacuumSystem : EntitySystem
         }
 
         var tankComp = tank.Value.Comp;
+        var isAlive = TryComp<MobStateComponent>(target, out var mobState) && mobState.CurrentState == MobState.Alive; // Ratbite - Xenovac Nerf
 
-        if (!HasComp<EmaggedComponent>(vacuum) && !_whitelist.IsWhitelistPass(vacuum.Comp.EntityWhitelist, target))
+        if ((!HasComp<EmaggedComponent>(vacuum) && !_whitelist.IsWhitelistPass(vacuum.Comp.EntityWhitelist, target)) || (HasComp<EmaggedComponent>(vacuum) && !_whitelist.IsWhitelistPass(vacuum.Comp.EntityWhitelist, target) && isAlive)) // Ratbite - Xenovac Nerf. it ugly but fuck you it work. dont fix what not broken.
         {
             var invalidEntityPopup = Loc.GetString("xeno-vacuum-suction-fail-invalid-entity-popup", ("ent", target));
             _popup.PopupEntity(invalidEntityPopup, vacuum, user);
