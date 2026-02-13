@@ -619,7 +619,7 @@
     soundHit:
       path: /Audio/Weapons/pierce.ogg
   - type: CombatDoAfter #Ratbite, this is fucking awesome and should stay
-    delay: 3 # But nerfed tho
+    delay: 4 # But nerfed tho
     trigger: !type:CombatSyringeTriggerEvent
     breakOnDamage: true
   - type: Projectile
