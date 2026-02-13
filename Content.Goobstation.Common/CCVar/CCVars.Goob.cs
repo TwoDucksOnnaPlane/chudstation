@@ -180,13 +180,13 @@ public sealed partial class GoobCVars
     ///     Default is 5f.
     /// </summary>
     public static readonly CVarDef<float> PlayerRageQuitTimeThreshold =
-        CVarDef.Create("ragequit.threshold", 30f, CVar.SERVERONLY);
+        CVarDef.Create("ragequit.threshold", 5f, CVar.SERVERONLY);
 
     /// <summary>
     ///     Log ragequits to a discord webhook, set to empty to disable.
     /// </summary>
     public static readonly CVarDef<string> PlayerRageQuitDiscordWebhook =
-        CVarDef.Create("ragequit.discord_webhook", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+        CVarDef.Create("ragequit.discord_webhook", "https://discord.com/api/webhooks/1469248531339415658/bLTh9aPuFVlSL01Kq18dmfwexTFtB_4nNXkzye6Jkqk5UjzivZkXrP9yQAGrBT0T8e-s", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
     #endregion PlayerListener
 
@@ -235,7 +235,7 @@ public sealed partial class GoobCVars
     ///     Discord Webhook for the station report
     /// </summary>
     public static readonly CVarDef<string> StationReportDiscordWebHook =
-        CVarDef.Create("stationreport.discord_webhook", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+        CVarDef.Create("stationreport.discord_webhook", "https://discord.com/api/webhooks/1432091455253385287/A9eBQf5dqchO-ka38yYQVvuomuNHvKySBpB_SxvVBi1GHi-NR3LeqG1L6nUwYUpMh_sL", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
     #endregion
 
@@ -249,7 +249,7 @@ public sealed partial class GoobCVars
     ///     Should the player automatically get up after being knocked down
     /// </summary>
     public static readonly CVarDef<bool> AutoGetUp =
-        CVarDef.Create("white.auto_get_up", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED); // WD EDIT
+        CVarDef.Create("white.auto_get_up", false, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED); // WD EDIT
 
     /// <summary>
     ///     Sets the size of the hitbox where projectile/laser will hit any entity regardless of crawling
@@ -594,7 +594,7 @@ public sealed partial class GoobCVars
     /// 0 means no variation - all limbs are damaged the same
     /// </summary>
     public static readonly CVarDef<float> ExplosionLimbDamageVariation =
-        CVarDef.Create("explosion.damage_variation", 2f, CVar.SERVERONLY);
+        CVarDef.Create("explosion.damage_variation", 0.2f, CVar.SERVERONLY);
 
     /// <summary>
     /// Multiplier to wounds caused by explosion damage
@@ -635,7 +635,7 @@ public sealed partial class GoobCVars
     /// Determines minimum amount of solution you have to step into for footprints to be created.
     /// </summary>
     public static readonly CVarDef<float> MinimumPuddleSizeForFootprints =
-        CVarDef.Create("footprints.minimum_puddle_size", 6f, CVar.SERVERONLY);
+        CVarDef.Create("footprints.minimum_puddle_size", 3f, CVar.SERVERONLY);
 
     /// <summary>
     /// Should heretic ascension ritual be cancelled if heretic hasn't completed their objectives.
