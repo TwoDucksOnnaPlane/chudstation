@@ -72,6 +72,11 @@
   - !type:RoleTimeRequirement
     role: JobSecurityOfficer
     time: 3600 #1 hrs
+  - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
   startingGear: DetectiveGear
   icon: "JobIconDetective"
   supervisors: job-supervisors-hos

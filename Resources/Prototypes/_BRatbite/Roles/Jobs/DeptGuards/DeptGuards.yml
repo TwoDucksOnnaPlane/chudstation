@@ -10,6 +10,11 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 3600 # 1 hour
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
   goobcoins: 30
   weight: 20
   startingGear: MedicalOrderlyGear
@@ -51,6 +56,11 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 3600 # 1 hour
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
 
   startingGear: CargoInsuranceGear
   icon: "JobIconCargoInsurance"
@@ -91,6 +101,11 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 3600 # 1 hour
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
   startingGear: ScicurityguardGear
   icon: "JobIconScicurityGuard"
   supervisors: job-supervisors-rd
@@ -130,6 +145,11 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 3600 # 1 hour
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
 
   startingGear: EngiSentryGear
   icon: "JobIconEngiSentry"

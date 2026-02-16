@@ -1793,6 +1793,9 @@
     threshold: 70
     cap: 140
   - type: DiseaseCarrier # Goobstation
+  - type: Emoting
+  - type: BodyEmotes
+    soundsId: GeneralBodyEmotes
 
 - type: entity
   name: monkey

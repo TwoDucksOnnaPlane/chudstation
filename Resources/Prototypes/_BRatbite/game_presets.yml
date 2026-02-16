@@ -9,6 +9,7 @@
     - PermaBrig # Needed
     - RatbiteBasicEventsScheduler
     - LowImpactAntagStationScheduler
+    - HeavierAntagStationScheduler
 
 - type: gamePreset
   id: SusRat
@@ -17,6 +18,7 @@
   description: The antag could be any one of us...He could be you!
   rules:
     - PermaBrig # Needed
+    - LowImpactAntagStationScheduler
     - RatbiteBasicEventsScheduler
     - SusStationEventScheduler
 
