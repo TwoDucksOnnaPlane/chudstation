@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 02/16/2026 23:41:33
-  entityCount: 10696
+  time: 02/16/2026 23:51:37
+  entityCount: 10697
 maps:
 - 1
 grids:
@@ -3800,7 +3800,7 @@ entities:
       pos: 16.5,-3.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -37583.45
+      secondsUntilStateChange: -37616.184
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -26913,7 +26913,7 @@ entities:
       pos: 59.5,-9.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -213504.84
+      secondsUntilStateChange: -213537.58
       state: Opening
 - proto: CurtainsRed
   entities:
@@ -26965,7 +26965,7 @@ entities:
       pos: 18.5,-7.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -19543.814
+      secondsUntilStateChange: -19576.547
       state: Closing
 - proto: CyberPen
   entities:
@@ -48814,7 +48814,7 @@ entities:
       pos: 50.5,-10.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -201036.48
+      secondsUntilStateChange: -201069.22
       state: Opening
   - uid: 7376
     components:
@@ -56256,6 +56256,19 @@ entities:
       rot: 3.141592653589793 rad
       pos: 4.5,-5.5
       parent: 2
+- proto: StationRadioServer
+  entities:
+  - uid: 10697
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 5.5,-4.5
+      parent: 2
+    - type: DeviceLinkSource
+      linkedPorts:
+        8553:
+        - - StationRadioServerPort
+          - StationRadioRigPort
 - proto: Stool
   entities:
   - uid: 8554
@@ -68375,7 +68388,7 @@ entities:
       pos: 32.5,-14.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -165175.67
+      secondsUntilStateChange: -165208.4
       state: Opening
   - uid: 10684
     components:
