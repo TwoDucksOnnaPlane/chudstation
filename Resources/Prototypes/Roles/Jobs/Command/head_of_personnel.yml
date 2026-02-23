@@ -146,10 +146,11 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 14400 # 4 hours
-    - !type:SpeciesRequirement # Goob - None Felinid
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
       inverted: true
       species:
       - Felinid
+      - Scurret
   guides: # goobstation
   - Command
   - Succession

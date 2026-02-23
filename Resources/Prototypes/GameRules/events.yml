@@ -148,10 +148,11 @@
 
 #Ratbite
 - type: entityTable
-  id: RatbiteEventsTable #Used for SqueakRat, holds ghostrole antags for now
+  id: RatbiteEventsTable #Used for SqueakRat
   table: !type:AllSelector
     children:
-    - id: SnakeSpawn
+#    - id: SnakeSpawn - Redrick greytide invisibility.
+    - id: SpiderSpawn
     - id: MalignRiftSpawn # DeltaV
     - id: RandomSentience
     - id: SlimesSpawn
@@ -161,6 +162,10 @@
     - id: GasLeak
     - id: IonStorm # its calm like 90% of the time smh
     - id: CockroachMigration
+    - id: BluespaceLocker
+    - id: BluespaceArtifact
+    - id: GiftsPizzaPartyLarge
+    - id: GiftsMedical
 
 - type: entityTable
   id: LowImpactAntagTable #Used for SqueakRat modes
@@ -171,6 +176,21 @@
     - id: ParadoxCloneSpawn
     - id: BingleSpawn
     - id: FloorGoblinMidRound
+    - id: LoneAbductorSpawn
+    - id: DarkPriestMidround
+    - id: Devil
+    - id: GiftsSecurityGuns # Hilarious, leads to good rp
+
+- type: entityTable
+  id: HeavierAntagTable #Used for SqueakRat modes
+  table: !type:AllSelector
+    children:
+    - id: SlasherSpawn
+    - id: XenomorphsInfestation
+    - id: SleeperAgents
+    - id: ChangelingMidround # Goob
+    - id: NinjaSpawn
+    - id: DerelictCyborgSpawn # RB, This shit is annoying, antag, not normal ghost role.
 
 - type: entityTable
   id: SusAntagTable #Used for the antag mode where it could be anyone

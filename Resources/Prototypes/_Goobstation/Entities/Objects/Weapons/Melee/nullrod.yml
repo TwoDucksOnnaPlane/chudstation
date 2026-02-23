@@ -706,7 +706,7 @@
     damage:
       types:
         Slash: 25
-        Piercing: 15
+        #Piercing: 15 - Nerfed for use on ratbite
         Holy: 10
 
 - type: entity

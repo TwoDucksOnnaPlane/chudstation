@@ -619,6 +619,7 @@
     soundHit:
       path: /Audio/Weapons/pierce.ogg
   - type: CombatDoAfter #Ratbite, this is fucking awesome and should stay
+    delay: 4 # But nerfed tho
     trigger: !type:CombatSyringeTriggerEvent
     breakOnDamage: true
   - type: Projectile
@@ -805,7 +806,7 @@
       Plasma: 25
       Silver: 12
   - type: CombatDoAfter # Goobstation
-    delay: 3 # Longer than a regular syringe
+    delay: 5 # Longer than a regular syringe
 
 - type: entity
   id: SyringeCryostasis

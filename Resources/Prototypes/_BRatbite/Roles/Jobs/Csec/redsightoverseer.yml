@@ -15,6 +15,11 @@
       time: 1800 # 30 mins
     - !type:AgeRequirement
       requiredAge: 21
+    - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
   goobcoins: 45
   weight: 20
   startingGear: RSOGear

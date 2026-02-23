@@ -15,6 +15,11 @@
   - !type:DepartmentTimeRequirement
     department: Security
     time: 3600 # 1 hrs
+  - !type:SpeciesRequirement # Ratbite Bill of Rights "non sentient" species.
+      inverted: true
+      species:
+      - Felinid
+      - Scurret
   startingGear: BrigmedicGear
   icon: "JobIconBrigmedic"
   supervisors: job-supervisors-hos
