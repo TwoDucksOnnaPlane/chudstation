@@ -30,6 +30,6 @@
   minPlayers: 25
   rules:
   - PermaBrig
-  - CombatDynamic
+  - RatCombatDynamic
   - SubGamemodesRule
   - IonStormScheduler
