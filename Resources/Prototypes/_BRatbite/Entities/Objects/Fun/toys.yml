@@ -26,7 +26,7 @@
       types:
         Blunt: 0
     soundHit:
-      path: /Audio/Nyanotrasen/Voice/Felinid/cat_scream2
+      path: /Audio/Nyanotrasen/Voice/Felinid/cat_scream2.ogg
 
 - type: entity
   parent: BasePlushie
