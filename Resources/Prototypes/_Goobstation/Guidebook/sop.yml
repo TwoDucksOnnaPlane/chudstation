@@ -318,10 +318,10 @@
   name: guide-entry-sop-ntr
   text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Command/NanotrasenRepSOP.xml"
 
-- type: guideEntry
-  id: BlueshieldOfficer SOP
-  name: guide-entry-sop-bso
-  text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Command/BlueshieldOfficerSOP.xml"
+#- type: guideEntry
+#  id: BlueshieldOfficer SOP
+#  name: guide-entry-sop-bso
+#  text: "/ServerInfo/_Goobstation/Guidebook/SoP/Jobs/Command/BlueshieldOfficerSOP.xml"
 
 - type: guideEntry
   id: Captain SOP
