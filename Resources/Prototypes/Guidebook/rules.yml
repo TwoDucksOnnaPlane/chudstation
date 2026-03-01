@@ -39,11 +39,11 @@
 #  priority: 1
 #  text: "/ServerInfo/_RatBite/Guidebook/ServerRules/SOP/CentralCommand.xml"
 
-- type: guideEntry # Default for forks and stuff. Should not be listed anywhere if the server is using a custom ruleset.
-  id: DefaultRuleset
-  name: guide-entry-rules
-  priority: 60
-  text: "/ServerInfo/Guidebook/ServerRules/Ratbite Station/DefaultServerRules.xml"
+#- type: guideEntry # Default for forks and stuff. Should not be listed anywhere if the server is using a custom ruleset.
+#  id: DefaultRuleset
+#  name: guide-entry-rules
+#  priority: 60
+#  text: "/ServerInfo/Guidebook/ServerRules/Ratbite Station/DefaultServerRules.xml"
 #  children:
 #  - CoreRules
 #  - RoleplayRules
