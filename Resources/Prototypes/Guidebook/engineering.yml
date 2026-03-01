@@ -144,7 +144,7 @@
   - SignalValve
   - PneumaticValve
   - PassiveGate
-  - PressureRegulator
+  #- PressureRegulator #pull the upstream file for this before you uncomment it
 
 - type: guideEntry
   id: ManualValve
