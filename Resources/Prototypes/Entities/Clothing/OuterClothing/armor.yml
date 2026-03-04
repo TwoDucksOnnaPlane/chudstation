@@ -189,7 +189,7 @@
     knockdownTimeDelta: -2
   - type: Tag
     tags:
-    - ScurretWearable
+    - ScurretWearable #Ratbite
 
 #Standard armor vest, allowed for security and bartenders
 - type: entity
@@ -583,6 +583,9 @@
     damageCoefficient: 0.8 #Ratbite
   - type: StaticPrice # Goob
     price: 1000
+  - type: Tag
+    tags:
+    - ScurretWearable #ratbite
 
 - type: entity # This is from upstream, so it goes in wizden code.
   parent: [ClothingOuterArmorCaptainCarapace, BaseCentcommContraband]

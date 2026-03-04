@@ -74,7 +74,7 @@
     damageCoefficient: 0.6
   - type: Tag
     tags:
-    - ScurretWearable
+    - ScurretWearable #Ratbite
 
 #Elite web vest
 - type: entity
@@ -119,7 +119,7 @@
     damageCoefficient: 0.4
   - type: Tag
     tags:
-    - ScurretWearable
+    - ScurretWearable #Ratbite
 
 #Mercenary web vest
 - type: entity
@@ -156,7 +156,7 @@
     damageCoefficient: 0.65
   - type: Tag
     tags:
-    - ScurretWearable
+    - ScurretWearable #Ratbite
 
 #Detective's vest
 - type: entity
@@ -171,7 +171,7 @@
     sprite: Clothing/OuterClothing/Vests/detvest.rsi
   - type: Tag
     tags:
-    - ScurretWearable
+    - ScurretWearable #Ratbite
 
 #Hazard vest
 - type: entity
@@ -210,7 +210,7 @@
     tags:
     - HiViz
     - WhitelistChameleon
-    - ScurretWearable
+    - ScurretWearable #Ratbite
 
 #(Bartender) vest
 - type: entity
@@ -241,4 +241,4 @@
     - 0, 0, 0, 1
   - type: Tag
     tags:
-    - ScurretWearable
+    - ScurretWearable #Ratbite
