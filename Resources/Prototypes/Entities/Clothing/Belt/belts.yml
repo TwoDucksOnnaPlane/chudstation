@@ -493,7 +493,7 @@
           tags:
           - Wrench
     sprite: Clothing/Belt/belt_overlay.rsi
-  - type: Appearance
+  - type: Tag
     tags:
     - ScurretWearable # Ratbite
 
@@ -508,7 +508,7 @@
     sprite: Clothing/Belt/emt.rsi
   - type: Clothing
     sprite: Clothing/Belt/emt.rsi
-  - type: tags
+  - type: ag
     tags:
     - ScurretWearable # Ratbite
 
@@ -568,7 +568,7 @@
           - Bottle
     sprite: Clothing/Belt/belt_overlay.rsi
   - type: Appearance
-  - type: tags
+  - type: Tag
     tags:
     - ScurretWearable # Ratbite
 
