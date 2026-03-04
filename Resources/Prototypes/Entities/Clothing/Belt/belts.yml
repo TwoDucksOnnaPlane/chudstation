@@ -325,6 +325,10 @@
           - Wrench
     sprite: Clothing/Belt/belt_overlay.rsi
   - type: Appearance
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite
+
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -508,7 +512,7 @@
     sprite: Clothing/Belt/emt.rsi
   - type: Clothing
     sprite: Clothing/Belt/emt.rsi
-  - type: ag
+  - type: Tag
     tags:
     - ScurretWearable # Ratbite
 
@@ -901,6 +905,9 @@
     size: Huge
   - type: ExplosionResistance
     damageCoefficient: 0.1
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite
 
 - type: entity
   parent: ClothingBeltBase
