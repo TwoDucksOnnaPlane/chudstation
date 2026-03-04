@@ -239,7 +239,7 @@
   - type: Tag
     tags:
     - UtilityBelt
-    - WhitelistChameleon
+    - ScurretWearable # Ratbite
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -494,6 +494,9 @@
           - Wrench
     sprite: Clothing/Belt/belt_overlay.rsi
   - type: Appearance
+    tags:
+    - ScurretWearable # Ratbite
+
 
 - type: entity
   parent: ClothingBeltMedical
@@ -505,6 +508,9 @@
     sprite: Clothing/Belt/emt.rsi
   - type: Clothing
     sprite: Clothing/Belt/emt.rsi
+  - type: tags
+    tags:
+    - ScurretWearable # Ratbite
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -562,6 +568,9 @@
           - Bottle
     sprite: Clothing/Belt/belt_overlay.rsi
   - type: Appearance
+  - type: tags
+    tags:
+    - ScurretWearable # Ratbite
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -639,6 +648,9 @@
           - PepperShaker
     sprite: Clothing/Belt/belt_overlay.rsi
   - type: Appearance
+  - type: Tag
+    tags:
+    - ScurretWearable # Ratbite
 
 - type: entity
   parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase, BaseSecurityContraband]
