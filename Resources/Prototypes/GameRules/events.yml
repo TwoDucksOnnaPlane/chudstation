@@ -158,7 +158,7 @@
     - id: SlimesSpawn
     - id: MothroachSpawn # DeltaV
     - id: MouseMigration
-    - id: VentClog
+   # - id: VentClog SHIT IS UGLY
     - id: GasLeak
     - id: IonStorm # its calm like 90% of the time smh
     - id: CockroachMigration
@@ -188,7 +188,7 @@
     - id: SlasherSpawn
     - id: XenomorphsInfestation
     - id: SleeperAgents
-    - id: ChangelingMidround # Goob
+ #   - id: ChangelingMidround Got annoying, moved to susrat
     - id: NinjaSpawn
     - id: DerelictCyborgSpawn # RB, This shit is annoying, antag, not normal ghost role.
 
@@ -200,6 +200,9 @@
     - id: Heretic
     - id: Changeling
     - id: SleeperAgents
+    - id: ChangelingMidround
+    - id: SleeperAgents
+    - id: HereticMidround
 
 # Ratbite Over
 
