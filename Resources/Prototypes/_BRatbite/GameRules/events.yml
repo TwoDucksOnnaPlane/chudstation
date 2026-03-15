@@ -1,4 +1,24 @@
 - type: entityTable
+  id: RatbiteEventsTable #Used for SqueakRat
+  table: !type:AllSelector
+    children:
+    #    - id: SnakeSpawn - Redrick greytide invisibility.
+    - id: SpiderSpawn
+    - id: MalignRiftSpawn # DeltaV
+    - id: RandomSentience
+    - id: SlimesSpawn
+    - id: MothroachSpawn # DeltaV
+    - id: MouseMigration
+    # - id: VentClog SHIT IS UGLY
+    - id: GasLeak
+    - id: IonStorm # its calm like 90% of the time smh
+    - id: CockroachMigration
+    - id: BluespaceLocker
+    - id: BluespaceArtifact
+    - id: GiftsPizzaPartyLarge
+    - id: GiftsMedical
+
+- type: entityTable
   id: RatHeavyMidrounds # LET'S DOOO THIISSSSSSS
   table: !type:AllSelector # I AM DANGEROUUUUSSS
     children:
@@ -28,3 +48,40 @@
     #- id: VoxRaidersMidround # Goobstation - New Midrounds
     #- id: TunnelClownMidround # Goobstation
     #- id: WraithMidround # Goobstation - Wraith     # see line 10
+
+- type: entityTable
+  id: LowImpactAntagTable #Used for SqueakRat modes
+  table: !type:AllSelector
+    children:
+    - id: ClosetSkeleton
+    - id: KingRatMigration
+    - id: ParadoxCloneSpawn
+    - id: BingleSpawn
+    - id: FloorGoblinMidRound
+    - id: LoneAbductorSpawn
+    - id: DarkPriestMidround
+    - id: Devil
+    - id: GiftsSecurityGuns # Hilarious, leads to good rp
+
+- type: entityTable
+  id: HeavierAntagTable #Used for SqueakRat modes
+  table: !type:AllSelector
+    children:
+    - id: SlasherSpawn
+    - id: XenomorphsInfestation
+    - id: SleeperAgents
+    #   - id: ChangelingMidround Got annoying, moved to susrat
+    - id: NinjaSpawn
+    - id: DerelictCyborgSpawn # RB, This shit is annoying, antag, not normal ghost role.
+
+- type: entityTable
+  id: SusAntagTable #Used for the antag mode where it could be anyone
+  table: !type:AllSelector
+    children:
+    - id: Traitor
+    - id: Heretic
+    - id: Changeling
+    - id: SleeperAgents
+    - id: ChangelingMidround
+    - id: SleeperAgents
+    - id: HereticMidround
