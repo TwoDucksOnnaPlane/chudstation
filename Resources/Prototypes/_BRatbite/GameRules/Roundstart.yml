@@ -33,7 +33,7 @@
 
 - type: entity
   id: GuideAntagStationScheduler
-  parent: BaseGamerule
+  parent: BaseGameRule
   components:
   - type: BasicStationEventScheduler
     scheduledGameRules: !type:NestedSelector
