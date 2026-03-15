@@ -20,7 +20,8 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-# RATBITE WEAPON LOADOUTS
+#region Weapon Loadouts
+#region Security
 - type: loadoutGroup
   id: SecuritySidearm
   name: loadout-group-security-sidearms
@@ -41,8 +42,11 @@
   - SecurityMK58Ammo
   - SecurityK38Ammo
   - SecurityEP12Ammo
+#endregion
+#endregion
 
-# RSO
+#region Command Gear
+#region RSO
 
 - type: loadoutGroup
   id: RedsightOverseerHead
@@ -82,9 +86,25 @@
   - RSOSatchel
   - RSODuffel
   - RSOMessenger
+#endregion
 
-# Dept Guard General
+#region Captain
 
+- type: loadoutGroup
+  id: CaptainBelt #Ratbite - Captain Powergaming
+  name: Captain Belt
+  loadouts:
+  - UtilityBelt
+  - SecurityBelt
+  - SecurityWebbing
+  - SecurityJudoBelt
+  - MedicalBelt
+#endregion
+
+#endregion
+
+#region Department Guard Gear
+#region General Gear
 - type: loadoutGroup
   id: DeptGuardHead
   name: loadout-group-deptguard-head
@@ -100,8 +120,8 @@
   loadouts:
   - ArmorVest
   - ArmorVestSlim
-
-# Medguard
+#endregion
+#region Medical
 
 - type: loadoutGroup
   id: MedOrderlyJumpsuit
@@ -109,8 +129,8 @@
   minLimit: 1
   loadouts:
   - MedGuardInsideJumpsuit
-
-# SciGuard
+#endregion
+#region Science
 
 - type: loadoutGroup
   id: SciguardJumpsuit
@@ -118,8 +138,8 @@
   minLimit: 1
   loadouts:
   - SciGuardInsideJumpsuit
-
-#CargoGuard
+#endregion
+#region Cargo
 
 - type: loadoutGroup
   id: CargoInsuranceJumpsuit
@@ -127,8 +147,8 @@
   minLimit: 1
   loadouts:
   - CargoGuardInsideJumpsuit
-
-#EngiGuard
+#endregion
+#region Engi
 
 - type: loadoutGroup
   id: EngiguardJumpsuit
@@ -136,3 +156,5 @@
   minLimit: 1
   loadouts:
   - EngiGuardInsideJumpsuit
+#endregion
+#endregion
