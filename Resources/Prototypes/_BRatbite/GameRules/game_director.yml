@@ -13,4 +13,4 @@
       - MajorCombat
   - type: SelectedGameRules
     scheduledGameRules: !type:NestedSelector
-      tableId: RatHeavyMidrounds
+      tableId: BasicGameRulesTable
