@@ -34,4 +34,5 @@
   - PermaBrig
   - RatCombatDynamic
   - SubGamemodesRule
-  - IonStormScheduler
+  - RatbiteBasicEventsScheduler
+  - GuideAntagStationScheduler
