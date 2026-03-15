@@ -4,6 +4,8 @@ loadout-group-rso-outerclothing = RSO Armor
 loadout-group-rso-eyes = RSO Redsights
 loadout-group-rso-back = RSO Back
 
+loadout-group-captain-belt = Captain Belt
+
 loadout-group-prisoner-jumpsuit = Prisoner jumpsuit
 
 loadout-group-passenger-head = Passenger Head

@@ -92,13 +92,14 @@
 
 - type: loadoutGroup
   id: CaptainBelt #Ratbite - Captain Powergaming
-  name: Captain Belt
+  name: loadout-group-captain-belt
   loadouts:
   - UtilityBelt
   - SecurityBelt
   - SecurityWebbing
   - SecurityJudoBelt
   - MedicalBelt
+
 #endregion
 
 #endregion
