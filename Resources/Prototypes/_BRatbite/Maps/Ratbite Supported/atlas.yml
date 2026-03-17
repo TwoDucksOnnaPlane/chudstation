@@ -66,6 +66,7 @@
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
             ServiceWorker: [ 1, 1 ]
+            RadioHost: [ 1, 1 ] # Ratbite
             #engineering
             ChiefEngineer: [ 1, 1 ]
             EngiSentry: [ 1, 1 ] #ratbite
