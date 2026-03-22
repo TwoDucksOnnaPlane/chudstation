@@ -531,7 +531,7 @@
     factions:
     - NanoTrasen
   - type: SiliconLawProvider
-    laws: CrewsimovBorg # Goobstation - AI/borg law changes - borgs obeying AI
+    laws: AsimovLaws # Goobstation - AI/borg law changes - borgs obeying AI
   - type: Access
     enabled: false
     groups:
