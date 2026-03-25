@@ -133,7 +133,7 @@
     slots: [ outerClothing ]
   - type: ClothingSpeedModifier
     walkModifier: 0.75
-    sprintModifier: 0.80
+    sprintModifier: 0.8
   - type: SealableClothing
     sealUpPopup: sealable-clothing-seal-up-chestplate
     sealDownPopup: sealable-clothing-seal-down-chestplate
@@ -209,7 +209,7 @@
     slots: [ outerClothing ]
   - type: ClothingSpeedModifier
     walkModifier: 0.75
-    sprintModifier: 0.80
+    sprintModifier: 0.8
   - type: SealableClothing
     sealUpPopup: sealable-clothing-seal-up-chestplate
     sealDownPopup: sealable-clothing-seal-down-chestplate
@@ -248,7 +248,7 @@
       coefficients:
         Blunt: 0.45
         Slash: 0.45
-        Piercing: 0.40
+        Piercing: 0.4
         Heat: 0.45
         Caustic: 0.5
         Radiation: 0.4
@@ -327,7 +327,7 @@
       coefficients:
         Blunt: 0.9
         Slash: 0.9
-        Piercing: 0.80
+        Piercing: 0.8
         Heat: 0.8
         Caustic: 0.6
         Radiation: 0.2
@@ -444,8 +444,8 @@
     unequipSound: /Audio/Mecha/mechmove03.ogg
     slots: [ outerClothing ]
   - type: ClothingSpeedModifier
-    walkModifier: 0.80
-    sprintModifier: 0.80
+    walkModifier: 0.8
+    sprintModifier: 0.8
   - type: SealableClothing
     sealUpPopup: sealable-clothing-seal-up-chestplate
     sealDownPopup: sealable-clothing-seal-down-chestplate
@@ -459,7 +459,7 @@
       outerClothing-vox:
       - state: equipped-OUTERCLOTHING-sealed-vox
   - type: ExplosionResistance
-    damageCoefficient: 0.40
+    damageCoefficient: 0.4
   - type: Armor
     traumaDeductions:
       Dismemberment: 0.2
@@ -519,7 +519,7 @@
     unequipSound: /Audio/Mecha/mechmove03.ogg
     slots: [ outerClothing ]
   - type: ClothingSpeedModifier
-    walkModifier: 0.70 
+    walkModifier: 0.7
     sprintModifier: 0.65
     #ratbite - Aurafarming RDs ONLY, no robusto speed (prevents combat unless stims or other methods)
   - type: SealableClothing
@@ -556,7 +556,7 @@
       coefficients:
         Blunt: 0.55
         Slash: 0.75
-        Piercing: 0.40
+        Piercing: 0.4
         Heat: 0.40
         Shock: 0.75
         Caustic: 0.25
