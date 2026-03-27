@@ -76,6 +76,9 @@
       - state: equipped-OUTERCLOTHING-sealed
       outerClothing-resomi:
       - state: equipped-OUTERCLOTHING-sealed-resomi
+  - type: Tag
+    tags:
+    - ScurretWearable
 # Ratbite removes stam resist 0.9
   - type: Armor
     coverage:
