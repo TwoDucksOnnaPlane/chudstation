@@ -1713,6 +1713,7 @@
   color: "#baa15d"
   metabolisms:
     Medicine:
+      metabolismRate: 0.1
       effects:
       - !type:HealthChange #Goobstation
         damage:
