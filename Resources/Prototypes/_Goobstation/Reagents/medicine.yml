@@ -164,6 +164,7 @@
   color: "#cc9c14"
   metabolisms:
     Medicine:
+      metabolismRate: 0.25
       effects:
       - !type:HealthChange
         damage:
@@ -547,6 +548,7 @@
       amount: -10
   metabolisms:
     Medicine:
+      metabolismRate: 0.35
       effects:
       - !type:HealthChange
         conditions:
