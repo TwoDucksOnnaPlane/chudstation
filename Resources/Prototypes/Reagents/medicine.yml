@@ -255,6 +255,7 @@
   color: "#ffaa00"
   metabolisms:
     Medicine:
+      metabolismRate: 0.25
       effects:
       - !type:SuppressPain
         amount: 1.2
