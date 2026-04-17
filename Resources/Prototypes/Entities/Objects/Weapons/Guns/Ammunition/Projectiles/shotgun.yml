@@ -123,7 +123,7 @@
       types:
         Piercing: 60 #Ratbite balance
         Structural: 15
-      armorPenetration: 0.4 # Ratbite - Did you know? Slug pen armor plate yes? Woooow. -Ducks
+      armorPenetration: 0.25 # Ratbite - Did you know? Slug pen armor plate yes? Woooow. -Ducks
 
 
 - type: entity
@@ -138,7 +138,8 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 10
+        Blunt: 7.5
+        Airloss: 12.5
   - type: StaminaDamageOnCollide
     damage: 60 # Goob edit
 
@@ -333,7 +334,7 @@
       types:
         Radiation: 5 # Ratbite - Lingering radiation from DU fragments
         Piercing: 10 # Ratbite
-      armorPenetration: 0.8 # Ratbite - Who knew depleted uranium was good at piercing armor?
+      armorPenetration: 0.4 # Ratbite - Who knew depleted uranium was good at piercing armor?
 
 - type: entity
   id: PelletShotgunUraniumSpread
@@ -342,7 +343,7 @@
   components:
   - type: ProjectileSpread
     proto: PelletShotgunUranium
-    count: 5 # 15*5=75 with tight spread and good AP
+    count: 5 # 15*5=75 with tight spread and okay AP
     spread: 6
 
 - type: entity
