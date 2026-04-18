@@ -139,7 +139,7 @@
     damage:
       types:
         Blunt: 7.5
-        Airloss: 12.5
+        Airloss: 7.5 # Ratbite - Knock the wind outta 'em
   - type: StaminaDamageOnCollide
     damage: 60 # Goob edit
 
