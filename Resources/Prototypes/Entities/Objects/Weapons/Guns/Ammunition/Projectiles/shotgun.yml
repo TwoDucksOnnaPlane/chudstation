@@ -333,7 +333,7 @@
       types:
         Radiation: 5 # Ratbite - Lingering radiation from DU fragments
         Piercing: 10 # Ratbite
-      armorPenetration: 0.4 # Ratbite - Who knew depleted uranium was good at piercing armor?
+      armorPenetration: 0.3 # Ratbite - Who knew depleted uranium was good at piercing armor?
 
 - type: entity
   id: PelletShotgunUraniumSpread
