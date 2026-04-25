@@ -123,7 +123,7 @@
       types:
         Piercing: 60 #Ratbite balance
         Structural: 15
-      armorPenetration: 0.25 # Ratbite - Did you know? Slug pen armor plate yes? Woooow. -Ducks
+      armorPenetration: 0.10 # Ratbite - Did you know? Slug pen armor plate yes? Woooow. -Ducks
 
 
 - type: entity
@@ -139,7 +139,6 @@
     damage:
       types:
         Blunt: 7.5
-        Airloss: 7.5 # Ratbite - Knock the wind outta 'em
   - type: StaminaDamageOnCollide
     damage: 60 # Goob edit
 
