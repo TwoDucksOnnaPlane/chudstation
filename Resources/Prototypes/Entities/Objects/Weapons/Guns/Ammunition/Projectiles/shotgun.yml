@@ -154,7 +154,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 10 # Ratbite - TRVTHNVKE buckshit shitgun meta
+        Piercing: 12 # Ratbite - TRVTHNVKE buckshit shitgun meta
         Structural: 5 # Ratbite - they'll bleed out anyways from the pierce before you whine
       armorPenetration: -0.4 # Ratbite - Body armor does what it's >>>explicitly designed to<<< against buckshot.
 
