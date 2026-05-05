@@ -180,7 +180,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
     {
         // TODO make PlayerSpawnCompleteEvent.JobId a ProtoId
         if (string.IsNullOrEmpty(jobId)
-            || (!_prototypeManager.HasIndex<JobPrototype>(jobId) && jobId != "prisoner"))
+            || !_prototypeManager.HasIndex<JobPrototype>(jobId))
             return;
 
         if (!_inventory.TryGetSlotEntity(player, "id", out var idUid))
