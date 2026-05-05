@@ -86,7 +86,7 @@ public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
         SubscribeLocalEvent<EntityRenamedEvent>(OnRename);
     }
 
-    public void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
+    private void OnPlayerSpawn(PlayerSpawnCompleteEvent args)
     {
         if (!TryComp<StationRecordsComponent>(args.Station, out var stationRecords))
             return;

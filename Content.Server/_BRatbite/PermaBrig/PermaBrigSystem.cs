@@ -215,6 +215,7 @@ public sealed class PermaBrigSystem : GameRuleSystem<PermaBrigComponent>
             false,
             player.Channel,
             Color.Red);
+
         _admin.UpdatePlayerList(player);
 
         var aev = new PlayerSpawnCompleteEvent(mob,

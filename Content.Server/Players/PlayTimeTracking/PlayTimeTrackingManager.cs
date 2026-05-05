@@ -166,12 +166,7 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
     {
         DebugTools.Assert(data.Initialized);
 
-        var cancel = FlushPermaTime(dirty);
-        if (cancel)
-        {
-            data.NeedRefreshTackers = false;
-            return;
-        }
+        FlushPermaTime(dirty);
         FlushSingleTracker(data, time);
 
         data.NeedRefreshTackers = false;
@@ -203,41 +198,20 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
         {
             FlushSingleTracker(data, time);
         }
-
-        foreach (var session in _playTimeData.Keys)
-        {
-            FlushPermaTime(session);
-        }
     }
 
 
-    public bool FlushPermaTime(ICommonSession session)
+    public void FlushPermaTime(ICommonSession session)
     {
         var data = _playTimeData[session];
         if (data.ActiveTrackers.Contains(PlayTimeTrackingShared.TrackerPerma))
         {
             var time = _timing.RealTime;
             var delta = time - data.LastUpdate;
-            if (delta.TotalMinutes < 1)
-            {
-                return true;
-            }
+
             _permaBrigManager.UpdateTimeServed(delta, session);
         }
         _permaBrigManager.UpdateTimeLastSeen(session);
-        return false;
-    }
-
-    public int GetFuturePermaTime(ICommonSession session)
-    {
-        var data = _playTimeData[session];
-        if (data.ActiveTrackers.Contains(PlayTimeTrackingShared.TrackerPerma))
-        {
-            var time = _timing.RealTime;
-            var delta = time - data.LastUpdate;
-            return (int)(_permaBrigManager.GetBrigTime(session.UserId) - delta.TotalMinutes);
-        }
-        return 0;
     }
 
     /// <summary>
@@ -390,7 +364,6 @@ public sealed class PlayTimeTrackingManager : ISharedPlaytimeManager, IPostInjec
 
     public void ClientDisconnected(ICommonSession session)
     {
-        FlushPermaTime(session);
         SaveSession(session);
 
         _playTimeData.Remove(session);

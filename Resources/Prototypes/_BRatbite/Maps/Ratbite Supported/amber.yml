@@ -32,7 +32,7 @@
   id: Amber
   mapName: 'Amber'
   mapPath: /Maps/_BRatbite/Ratbite_Supported/amber.yml
-  minPlayers: 20
+  minPlayers: 30
   maxPlayers: 60
   stations:
     Amber:
