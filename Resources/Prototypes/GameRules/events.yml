@@ -412,7 +412,7 @@
     earliestStart: 30 # Goobstation - was 45
     #reoccurrenceDelay: 20 # Goobstation - no longer needed
     maxOccurrences: 1 # Goobstation
-    minimumPlayers: 30
+    minimumPlayers: 35
     chaos: # Goobstation
       Hostile: 20
       Friend: 20
@@ -422,7 +422,7 @@
     eventType: HostilesSpawn # Goobstation
   # Goobstation
   - type: GameRule
-    chaosScore: 300
+    chaosScore: 900 # Ratbite antag cut
   - type: SpaceSpawnRule
   - type: AntagLoadProfileRule
     # Goobstation start

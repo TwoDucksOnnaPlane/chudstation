@@ -34,7 +34,7 @@
   id: OasisHighPop
   mapName: 'Oasis'
   mapPath: /Maps/_Goobstation/oasis.yml
-  minPlayers: 70
+  minPlayers: 50
   stations:
     Oasis:
       stationProto: StandardNanotrasenStation

@@ -36,7 +36,7 @@
 - type: gameMap
   id: Marathon
   mapName: 'Marathon Station'
-  mapPath: /Maps/_Goobstation/marathon.yml # Goobstation
+  mapPath: /Maps/_BRatbite/Ratbite_Supported/marathon.yml
   minPlayers: 45
   maxPlayers: 75
   stations:
