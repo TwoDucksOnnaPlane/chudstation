@@ -27,9 +27,9 @@
   - ratcombat
   - ratcombatdynamic
   name: ratguide-title
-  showInVote: false #Pending rework
+  showInVote: true #fixed + updated, let them go greentext - Ducks
   description: ratguide-description
-  minPlayers: 25
+  minPlayers: 15 # me when i put a midpop cap on the lowpop server
   rules:
   - PermaBrig
   - RatCombatDynamic
