@@ -34,19 +34,19 @@
     #- id: ZombieOutbreak # i don't know if armokbies are reverted and i don't want to find out
     - id: LoneOpsSpawn
     - id: DerelictCyborgSpawn
-    - id: BlobSpawn # Goobstation - Blob      # A test of mettle for only the most robust stations.
+    #- id: BlobSpawn # Goobstation - Blob      # boo womp lasers are hard for You People apparently
     - id: LoneAbductorSpawn # Shitmed - Starlight Abductors
     - id: DuoAbductorSpawn # Shitmed - Starlight Abductors
     - id: BingleSpawn #Goobstation - Bingle
     #- id: SlaughterDemonMidround # Goobstation - Slaughter Demon    # Personal experience says
-    #- id: XenomorphsInfestation # maybe one day when You People (derogatory) learn to stop rushing in we can have nice things again
+    - id: XenomorphsInfestation # shotgun meta + personal experience shows these are actually weak as FUCK!!!
     #- id: GreyTideAntagMidround # Goobstation - New Midrounds     #I don't even think these are enabled on goob, but we might want them Eventually:tm:
-    #- id: SingulothKnightsMidround # Goobstation - New Midrounds
-    #- id: DarkLordMidround # Goobstation - New Midrounds
+    - id: SingulothKnightsMidround # Goobstation - New Midrounds
+    - id: DarkLordMidround # Goobstation - New Midrounds
     #- id: MimeAssassinMidround # Goobstation - New Midrounds
-    #- id: DarkPriestMidround # Goobstation - New Midrounds
+    - id: DarkPriestMidround # Goobstation - New Midrounds
     #- id: VoxRaidersMidround # Goobstation - New Midrounds
-    #- id: TunnelClownMidround # Goobstation
+    - id: TunnelClownMidround # Goobstation
     #- id: WraithMidround # Goobstation - Wraith     # see line 10
 
 - type: entityTable
@@ -58,9 +58,7 @@
     - id: ParadoxCloneSpawn
     - id: BingleSpawn
     - id: FloorGoblinMidRound
-    - id: LoneAbductorSpawn
     - id: DarkPriestMidround
-    - id: Devil
     - id: GiftsSecurityGuns # Hilarious, leads to good rp
 
 - type: entityTable
@@ -68,11 +66,14 @@
   table: !type:AllSelector
     children:
     - id: SlasherSpawn
-    - id: XenomorphsInfestation
-    - id: SleeperAgents
-    #   - id: ChangelingMidround Got annoying, moved to susrat
+ #   - id: XenomorphsInfestation
+ #   - id: SleeperAgents
+ #   - id: ChangelingMidround Got annoying, moved to susrat
     - id: NinjaSpawn
     - id: DerelictCyborgSpawn # RB, This shit is annoying, antag, not normal ghost role.
+    - id: Devil
+    - id: LoneAbductorSpawn
+    - id: LoneOpsSpawn
 
 - type: entityTable
   id: SusAntagTable #Used for the antag mode where it could be anyone
@@ -83,5 +84,4 @@
     - id: Changeling
     - id: SleeperAgents
     - id: ChangelingMidround
-    - id: SleeperAgents
     - id: HereticMidround
