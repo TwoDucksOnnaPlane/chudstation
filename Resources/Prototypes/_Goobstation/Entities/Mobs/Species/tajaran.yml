@@ -132,6 +132,7 @@
   - type: Sprinter
     staminaDrainRate: 12 # Ratbite
   - type: ThermalVision
+    color: "#ABCDEF"
     activateSound: null
     deactivateSound: null
 

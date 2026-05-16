@@ -118,6 +118,7 @@ using Content.Shared.Maps;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
+using Content.Shared._DV.Abilities; // DeltaV - CrawlUnderObjectsComponent
 using Content.Shared._DV.StepTrigger.Components; // DeltaV - NoShoesSilentFootstepsComponent
 using Content.Shared.Tag;
 using Robust.Shared.Audio;
@@ -176,6 +177,7 @@ public abstract partial class SharedMoverController : VirtualController
     protected EntityQuery<RelayInputMoverComponent> RelayQuery;
     protected EntityQuery<PullableComponent> PullableQuery;
     protected EntityQuery<TransformComponent> XformQuery;
+    protected EntityQuery<CrawlUnderObjectsComponent> CrawlUnderObjectsQuery; // DeltaV - Rodentia silent sneak footsteps
     protected EntityQuery<NoShoesSilentFootstepsComponent> NoShoesSilentQuery; // DeltaV - NoShoesSilentFootstepsComponent
 
     private static readonly ProtoId<TagPrototype> FootstepSoundTag = "FootstepSound";
@@ -213,6 +215,7 @@ public abstract partial class SharedMoverController : VirtualController
         MapGridQuery = GetEntityQuery<MapGridComponent>();
         FixturesQuery = GetEntityQuery<FixturesComponent>(); // Tile Movement Change
         TileMovementQuery = GetEntityQuery<TileMovementComponent>(); // Tile Movement Change
+        CrawlUnderObjectsQuery = GetEntityQuery<CrawlUnderObjectsComponent>(); // DeltaV - Rodentia silent sneak footsteps
         NoShoesSilentQuery = GetEntityQuery<NoShoesSilentFootstepsComponent>(); // DeltaV - NoShoesSilentFootstepsComponent
         MapQuery = GetEntityQuery<MapComponent>();
 
@@ -684,6 +687,11 @@ public abstract partial class SharedMoverController : VirtualController
             return false;
 
         mobMover.StepSoundDistance -= distanceNeeded;
+
+        // DeltaV - Rodentia are silent while their species sneak mode is enabled.
+        if (CrawlUnderObjectsQuery.TryComp(uid, out var crawlUnderObjects) && crawlUnderObjects.Enabled)
+            return false;
+        // End DeltaV code
 
         // DeltaV - Don't play the sound if they have no shoes and the component
         if (NoShoesSilentQuery.HasComp(uid) &&
