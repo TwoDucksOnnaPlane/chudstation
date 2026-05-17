@@ -202,7 +202,6 @@
     - id: Changeling
     - id: SleeperAgents
     - id: ChangelingMidround
-    - id: SleeperAgents
     - id: HereticMidround
 
 # Ratbite Over
@@ -470,7 +469,7 @@
   - type: StationEvent
     weight: 3 # Goobstation - was 6
     duration: null
-    earliestStart: 30 # Goobstation - was 45
+    earliestStart: 25 # Ratbite - was 30, 25 is about our midpop during weekdays
     #reoccurrenceDelay: 20 # Goobstation - no longer needed
     maxOccurrences: 1 # Goobstation
     minimumPlayers: 30
@@ -483,7 +482,7 @@
     eventType: HostilesSpawn # Goobstation
   # Goobstation
   - type: GameRule
-    chaosScore: 300
+    chaosScore: 500 # Ratbite - 900 was a bit much, though still a decent threat that summons more threats so 500 it is
   - type: SpaceSpawnRule
   - type: AntagLoadProfileRule
     # Goobstation start
