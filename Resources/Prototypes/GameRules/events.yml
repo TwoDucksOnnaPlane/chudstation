@@ -185,7 +185,7 @@
     children:
     - id: SlasherSpawn
  #   - id: XenomorphsInfestation
- #   - id: SleeperAgents
+    - id: SleeperAgents
  #   - id: ChangelingMidround Got annoying, moved to susrat
     - id: NinjaSpawn
     - id: DerelictCyborgSpawn # RB, This shit is annoying, antag, not normal ghost role.
@@ -202,6 +202,7 @@
     - id: Changeling
     - id: SleeperAgents
     - id: ChangelingMidround
+    - id: SleeperAgents
     - id: HereticMidround
 
 # Ratbite Over
@@ -472,7 +473,7 @@
     earliestStart: 30 # Goobstation - was 45
     #reoccurrenceDelay: 20 # Goobstation - no longer needed
     maxOccurrences: 1 # Goobstation
-    minimumPlayers: 35
+    minimumPlayers: 30
     chaos: # Goobstation
       Hostile: 20
       Friend: 20
@@ -482,7 +483,7 @@
     eventType: HostilesSpawn # Goobstation
   # Goobstation
   - type: GameRule
-    chaosScore: 900 # Ratbite antag cut
+    chaosScore: 300
   - type: SpaceSpawnRule
   - type: AntagLoadProfileRule
     # Goobstation start
