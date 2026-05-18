@@ -10,8 +10,16 @@ namespace Content.Client.Lobby.UI.Roles;
 [GenerateTypedNameReferences]
 public sealed partial class TraitPreferenceSelector : Control
 {
+    private static readonly Color PositiveCostColor = Color.FromHex("#7bd88f");
+    private static readonly Color NegativeCostColor = Color.FromHex("#ff8c8c");
+    private static readonly Color NeutralCostColor = Color.Gray;
+    private static readonly Color SelectedBackgroundColor = Color.FromHex("#3f4a3f");
+    private static readonly Color SelectedTextColor = Color.FromHex("#d7ffd7");
+    private static readonly Color UnavailableTextColor = Color.FromHex("#d46a6a");
+
     public int Cost;
     private bool _preference;
+    private bool _unavailable;
 
     public bool Preference
     {
@@ -31,75 +39,66 @@ public sealed partial class TraitPreferenceSelector : Control
 
         Cost = trait.Cost;
 
-        // Set the trait name
         NameLabel.Text = Loc.GetString(trait.Name);
 
-        // Set the cost text and color
-        string costText = "";
+        var costText = "";
         if (trait.Cost > 0)
         {
             costText = $"-{trait.Cost}";
-            CostLabel.FontColorOverride = Color.Red;
+            CostLabel.FontColorOverride = NegativeCostColor;
         }
         else if (trait.Cost < 0)
         {
             costText = $"+{-trait.Cost}";
-            CostLabel.FontColorOverride = Color.Green;
+            CostLabel.FontColorOverride = PositiveCostColor;
         }
         else
         {
             costText = $"{trait.Cost}";
-            CostLabel.FontColorOverride = Color.Gray;
+            CostLabel.FontColorOverride = NeutralCostColor;
         }
 
         CostLabel.Text = costText;
 
-        // Set up button event
         TraitButton.OnPressed += OnTraitButtonPressed;
 
         if (trait.Description is { } desc)
-        {
             TraitButton.ToolTip = Loc.GetString(desc);
-        }
 
         UpdateButtonState();
     }
 
-        public void SetTooltip(string tooltip)
+    public void SetTooltip(string tooltip)
+    {
+        TraitButton.TooltipSupplier = _ =>
         {
-            TraitButton.TooltipSupplier = _ =>
-            {
-                var tip = new Robust.Client.UserInterface.CustomControls.Tooltip();
-                tip.SetMessage(FormattedMessage.FromMarkupPermissive(tooltip));
-                return tip;
-            };
-        }
+            var tip = new Robust.Client.UserInterface.CustomControls.Tooltip();
+            tip.SetMessage(FormattedMessage.FromMarkupPermissive(tooltip));
+            return tip;
+        };
+    }
 
     private void OnTraitButtonPressed(BaseButton.ButtonEventArgs args)
     {
-        // Clicking the trait button toggles selection
         Preference = !Preference;
         PreferenceChanged?.Invoke(Preference);
     }
 
     private void UpdateButtonState()
     {
+        SelectedLabel.Text = Preference ? ">" : "";
+        TraitButton.Disabled = _unavailable;
+
         if (Preference)
         {
-            // Add a visual indicator that it's selected
-            TraitButton.StyleClasses.Remove("OpenBottom");
-            TraitButton.AddStyleClass("OpenBottomSelected");
-
-            TraitButton.ModulateSelfOverride = Color.FromHex("#505050");
+            TraitButton.ModulateSelfOverride = SelectedBackgroundColor;
+            NameLabel.FontColorOverride = _unavailable ? UnavailableTextColor : SelectedTextColor;
         }
         else
         {
-            // Remove the selected visual indicator
-            TraitButton.StyleClasses.Remove("OpenBottomSelected");
             TraitButton.StyleClasses.Add("OpenBottom");
-
-            // Reset the background color
             TraitButton.ModulateSelfOverride = null;
+            NameLabel.FontColorOverride = _unavailable ? UnavailableTextColor : null;
         }
     }
 
@@ -110,31 +109,7 @@ public sealed partial class TraitPreferenceSelector : Control
     /// <param name="unavailable">Whether the trait is unavailable for selection</param>
     public void SetUnavailable(bool unavailable)
     {
-        if (unavailable)
-        {
-            NameLabel.FontColorOverride = Color.Red;
-            TraitButton.Disabled = true;
-
-            // Preserve the darker gray background if this trait is selected
-            if (Preference)
-            {
-                TraitButton.ModulateSelfOverride = Color.FromHex("#454545");
-            }
-        }
-        else
-        {
-            NameLabel.FontColorOverride = null;
-            TraitButton.Disabled = false;
-
-            // Restore the appropriate background color based on selection state
-            if (Preference)
-            {
-                TraitButton.ModulateSelfOverride = Color.FromHex("#505050");
-            }
-            else
-            {
-                TraitButton.ModulateSelfOverride = null;
-            }
-        }
+        _unavailable = unavailable;
+        UpdateButtonState();
     }
 }

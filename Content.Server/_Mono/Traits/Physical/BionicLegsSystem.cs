@@ -13,6 +13,16 @@ namespace Content.Server._Mono.Traits.Physical;
 
 public sealed class BionicLegsSystem : EntitySystem
 {
+    private const string LeftLegSlot = "left leg";
+    private const string RightLegSlot = "right leg";
+    private const string LeftFootSlot = "left foot";
+    private const string RightFootSlot = "right foot";
+
+    private static readonly EntProtoId SpeedLeftLeg = "SpeedLeftLeg";
+    private static readonly EntProtoId SpeedRightLeg = "SpeedRightLeg";
+    private static readonly EntProtoId LeftFootCybernetic = "LeftFootCybernetic";
+    private static readonly EntProtoId RightFootCybernetic = "RightFootCybernetic";
+
     [Dependency] private readonly SharedBodySystem _bodySystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
@@ -43,56 +53,100 @@ public sealed class BionicLegsSystem : EntitySystem
         if (!TryComp(torso, out BodyPartComponent? torsoPart))
             return;
 
-        var leftLegSlotId = SharedBodySystem.GetPartSlotContainerId("left leg");
+        if (TryFindPartWithSlot(torso, torsoPart, LeftLegSlot, out var leftLegParent, out var leftLegParentPart))
+            ReplacePartIfPresent(leftLegParent, leftLegParentPart, LeftLegSlot, SpeedLeftLeg, LeftFootSlot, LeftFootCybernetic);
 
-        if (_containerSystem.TryGetContainer(torso, leftLegSlotId, out var leftLegContainer) && leftLegContainer.ContainedEntities.Count > 0)
-        {
-            foreach (var leftLeg in leftLegContainer.ContainedEntities.ToArray())
-            {
-                if (TryComp(leftLeg, out BodyPartComponent? leftLegPart))
-                    SpawnAndReplace("SpeedLeftLeg", torso, "left leg");
-            }
-        }
-
-        var rightLegSlotId = SharedBodySystem.GetPartSlotContainerId("right leg");
-
-        if (_containerSystem.TryGetContainer(torso, rightLegSlotId, out var rightLegContainer) && rightLegContainer.ContainedEntities.Count > 0)
-        {
-            foreach (var rightLeg in rightLegContainer.ContainedEntities.ToArray())
-            {
-                if (TryComp(rightLeg, out BodyPartComponent? rightLegPart))
-                    SpawnAndReplace("SpeedRightLeg", torso, "right leg");
-            }
-        }
+        if (TryFindPartWithSlot(torso, torsoPart, RightLegSlot, out var rightLegParent, out var rightLegParentPart))
+            ReplacePartIfPresent(rightLegParent, rightLegParentPart, RightLegSlot, SpeedRightLeg, RightFootSlot, RightFootCybernetic);
     }
 
-    private void SpawnAndReplace(string partProtoId, EntityUid parentEntity, string slotId)
+    private bool TryFindPartWithSlot(
+        EntityUid parentEntity,
+        BodyPartComponent parentPart,
+        string slotId,
+        out EntityUid foundEntity,
+        out BodyPartComponent foundPart)
     {
+        if (parentPart.Children.ContainsKey(slotId))
+        {
+            foundEntity = parentEntity;
+            foundPart = parentPart;
+            return true;
+        }
+
+        foreach (var (childSlotId, _) in parentPart.Children)
+        {
+            var childContainerId = SharedBodySystem.GetPartSlotContainerId(childSlotId);
+
+            if (!_containerSystem.TryGetContainer(parentEntity, childContainerId, out var childContainer))
+                continue;
+
+            foreach (var child in childContainer.ContainedEntities)
+            {
+                if (!TryComp(child, out BodyPartComponent? childPart))
+                    continue;
+
+                if (TryFindPartWithSlot(child, childPart, slotId, out foundEntity, out foundPart))
+                    return true;
+            }
+        }
+
+        foundEntity = default;
+        foundPart = default!;
+        return false;
+    }
+
+    private void ReplacePartIfPresent(
+        EntityUid parentEntity,
+        BodyPartComponent parentPart,
+        string slotId,
+        EntProtoId partProtoId,
+        string childSlotId,
+        EntProtoId childProtoId)
+    {
+        var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
+        if (!_containerSystem.TryGetContainer(parentEntity, containerId, out var container) ||
+            container.ContainedEntities.Count == 0)
+            return;
+
         if (!_prototypeManager.TryIndex(partProtoId, out _))
             return;
 
-        if (!TryComp(parentEntity, out BodyPartComponent? parentPart))
+        if (!_prototypeManager.TryIndex(childProtoId, out _))
             return;
 
-        var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
-
-        if (_containerSystem.TryGetContainer(parentEntity, containerId, out var container))
+        var oldEntities = container.ContainedEntities.ToArray();
+        foreach (var oldEntity in oldEntities)
         {
-            var oldEntities = container.ContainedEntities.ToArray();
-
-            foreach (var oldEntity in oldEntities)
-            {
-                if (TryComp(oldEntity, out BodyPartComponent? oldPart))
-                    DeleteChildParts(oldEntity, oldPart);
-            }
-
-            foreach (var entity in oldEntities)
-            {
-                _containerSystem.Remove(entity, container);
-                QueueDel(entity);
-            }
+            if (TryComp(oldEntity, out BodyPartComponent? oldPart))
+                DeleteChildParts(oldEntity, oldPart);
         }
 
+        foreach (var entity in oldEntities)
+        {
+            _containerSystem.Remove(entity, container);
+            QueueDel(entity);
+        }
+
+        var newPart = Spawn(partProtoId, new EntityCoordinates(parentEntity, Vector2.Zero));
+
+        if (!TryComp(newPart, out BodyPartComponent? newPartComp))
+        {
+            QueueDel(newPart);
+            return;
+        }
+
+        if (!_bodySystem.AttachPart(parentEntity, slotId, newPart, parentPart, newPartComp))
+        {
+            QueueDel(newPart);
+            return;
+        }
+
+        AttachChildPart(newPart, newPartComp, childSlotId, childProtoId);
+    }
+
+    private void AttachChildPart(EntityUid parentEntity, BodyPartComponent parentPart, string slotId, EntProtoId partProtoId)
+    {
         var newPart = Spawn(partProtoId, new EntityCoordinates(parentEntity, Vector2.Zero));
 
         if (!TryComp(newPart, out BodyPartComponent? newPartComp))
@@ -127,5 +181,3 @@ public sealed class BionicLegsSystem : EntitySystem
         }
     }
 }
-
-

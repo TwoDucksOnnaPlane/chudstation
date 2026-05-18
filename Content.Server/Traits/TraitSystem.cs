@@ -63,6 +63,7 @@ public sealed class TraitSystem : EntitySystem
 
             // Begin Goobstation: Species trait support
             if (traitPrototype.IncludedSpecies.Count > 0 && !traitPrototype.IncludedSpecies.Contains(args.Profile.Species) ||
+                traitPrototype.SpeciesBlacklist.Contains(args.Profile.Species) ||
                 traitPrototype.ExcludedSpecies.Contains(args.Profile.Species))
                 continue;
             // End Goobstation: Species trait support

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Control xmlns="https://spacestation14.io"
-         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-         xmlns:stylesheets="clr-namespace:Content.Client.Stylesheets">
-    <BoxContainer Name="Container" Orientation="Vertical" HorizontalAlignment="Left">
-        <Button Name="TraitButton" Access="Public" StyleClasses="OpenBottom" MaxWidth="250" TextAlign="Left">
-            <BoxContainer Orientation="Horizontal">
-                <Label Name="CostLabel" MinWidth="30" />
-                <Label Name="NameLabel" Margin="10,0,0,0" />
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <BoxContainer Name="Container" Orientation="Vertical" HorizontalExpand="True">
+        <Button Name="TraitButton" Access="Public" StyleClasses="OpenBottom" HorizontalExpand="True" MinHeight="28" TextAlign="Left">
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                <Label Name="SelectedLabel" MinWidth="18" />
+                <Label Name="CostLabel" MinWidth="34" />
+                <Label Name="NameLabel" Margin="8,0,0,0" HorizontalExpand="True" />
             </BoxContainer>
         </Button>
     </BoxContainer>

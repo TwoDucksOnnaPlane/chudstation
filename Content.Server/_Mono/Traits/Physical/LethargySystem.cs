@@ -16,18 +16,11 @@ public sealed class LethargySystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<LethargyComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<LethargyComponent, ComponentShutdown>(OnShutdown);
-        //SubscribeLocalEvent<StaminaComponent, ComponentInit>(OnStaminaInit);
     }
 
     private void OnStartup(Entity<LethargyComponent> ent, ref ComponentStartup args)
     {
         Apply(ent);
-    }
-
-    private void OnStaminaInit(EntityUid uid, StaminaComponent component, ComponentInit args)
-    {
-        if (HasComp<LethargyComponent>(uid))
-            Apply((uid, Comp<LethargyComponent>(uid)));
     }
 
     private void OnShutdown(Entity<LethargyComponent> ent, ref ComponentShutdown args)
@@ -59,5 +52,3 @@ public sealed class LethargySystem : EntitySystem
         Dirty(ent, stamina);
     }
 }
-
-

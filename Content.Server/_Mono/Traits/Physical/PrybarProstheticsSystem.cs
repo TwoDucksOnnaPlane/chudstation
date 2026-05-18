@@ -15,6 +15,16 @@ namespace Content.Server._Mono.Traits.Physical;
 /// </summary>
 public sealed class PrybarProstheticsSystem : EntitySystem
 {
+    private const string LeftArmSlot = "left arm";
+    private const string RightArmSlot = "right arm";
+    private const string LeftHandSlot = "left hand";
+    private const string RightHandSlot = "right hand";
+
+    private static readonly EntProtoId JawsOfLifeLeftArm = "JawsOfLifeLeftArm";
+    private static readonly EntProtoId JawsOfLifeRightArm = "JawsOfLifeRightArm";
+    private static readonly EntProtoId LeftHandCybernetic = "LeftHandCybernetic";
+    private static readonly EntProtoId RightHandCybernetic = "RightHandCybernetic";
+
     [Dependency] private readonly SharedBodySystem _bodySystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
@@ -33,78 +43,48 @@ public sealed class PrybarProstheticsSystem : EntitySystem
     private void ReplaceArms(Entity<PrybarProstheticsComponent> ent)
     {
         if (!TryComp(ent, out BodyComponent? body))
-        {
             return;
-        }
 
-        if (body.RootContainer.ContainedEntities.Count == 0)
-        {
+        if (body.RootContainer.ContainedEntity is not { } torso)
             return;
-        }
-
-        var torso = body.RootContainer.ContainedEntities.FirstOrDefault();
 
         if (!TryComp(torso, out BodyPartComponent? torsoPart))
-        {
             return;
-        }
 
-        var leftArmSlotId = SharedBodySystem.GetPartSlotContainerId("left arm");
-
-        if (_containerSystem.TryGetContainer(torso, leftArmSlotId, out var leftArmContainer) && leftArmContainer.ContainedEntities.Count > 0)
-        {
-            foreach (var leftArm in leftArmContainer.ContainedEntities.ToArray())
-            {
-                if (TryComp(leftArm, out BodyPartComponent? leftArmPart))
-                {
-                    SpawnAndReplace("JawsOfLifeLeftArm", torso, "left arm");
-                }
-            }
-        }
-
-        var rightArmSlotId = SharedBodySystem.GetPartSlotContainerId("right arm");
-
-        if (_containerSystem.TryGetContainer(torso, rightArmSlotId, out var rightArmContainer) && rightArmContainer.ContainedEntities.Count > 0)
-        {
-            foreach (var rightArm in rightArmContainer.ContainedEntities.ToArray())
-            {
-                if (TryComp(rightArm, out BodyPartComponent? rightArmPart))
-                {
-                    SpawnAndReplace("JawsOfLifeRightArm", torso, "right arm");
-                }
-            }
-        }
+        ReplacePartIfPresent(torso, torsoPart, LeftArmSlot, JawsOfLifeLeftArm, LeftHandSlot, LeftHandCybernetic);
+        ReplacePartIfPresent(torso, torsoPart, RightArmSlot, JawsOfLifeRightArm, RightHandSlot, RightHandCybernetic);
     }
 
-    private void SpawnAndReplace(string partProtoId, EntityUid parentEntity, string slotId)
+    private void ReplacePartIfPresent(
+        EntityUid parentEntity,
+        BodyPartComponent parentPart,
+        string slotId,
+        EntProtoId partProtoId,
+        string childSlotId,
+        EntProtoId childProtoId)
     {
-        if (!_prototypeManager.TryIndex(partProtoId, out _))
-        {
+        var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
+        if (!_containerSystem.TryGetContainer(parentEntity, containerId, out var container) ||
+            container.ContainedEntities.Count == 0)
             return;
+
+        if (!_prototypeManager.TryIndex(partProtoId, out _))
+            return;
+
+        if (!_prototypeManager.TryIndex(childProtoId, out _))
+            return;
+
+        var oldEntities = container.ContainedEntities.ToArray();
+        foreach (var oldEntity in oldEntities)
+        {
+            if (TryComp(oldEntity, out BodyPartComponent? oldPart))
+                DeleteChildParts(oldEntity, oldPart);
         }
 
-        if (!TryComp(parentEntity, out BodyPartComponent? parentPart))
-            return;
-
-        var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
-
-        if (_containerSystem.TryGetContainer(parentEntity, containerId, out var container))
+        foreach (var entity in oldEntities)
         {
-            var oldEntities = container.ContainedEntities.ToArray();
-
-            foreach (var oldEntity in oldEntities)
-            {
-                if (TryComp(oldEntity, out BodyPartComponent? oldPart))
-                {
-                    DeleteChildParts(oldEntity, oldPart);
-                }
-            }
-
-            foreach (var entity in oldEntities)
-            {
-                _containerSystem.Remove(entity, container);
-                QueueDel(entity);
-            }
+            _containerSystem.Remove(entity, container);
+            QueueDel(entity);
         }
 
         var newPart = Spawn(partProtoId, new EntityCoordinates(parentEntity, Vector2.Zero));
@@ -118,7 +98,24 @@ public sealed class PrybarProstheticsSystem : EntitySystem
         if (!_bodySystem.AttachPart(parentEntity, slotId, newPart, parentPart, newPartComp))
         {
             QueueDel(newPart);
+            return;
         }
+
+        AttachChildPart(newPart, newPartComp, childSlotId, childProtoId);
+    }
+
+    private void AttachChildPart(EntityUid parentEntity, BodyPartComponent parentPart, string slotId, EntProtoId partProtoId)
+    {
+        var newPart = Spawn(partProtoId, new EntityCoordinates(parentEntity, Vector2.Zero));
+
+        if (!TryComp(newPart, out BodyPartComponent? newPartComp))
+        {
+            QueueDel(newPart);
+            return;
+        }
+
+        if (!_bodySystem.AttachPart(parentEntity, slotId, newPart, parentPart, newPartComp))
+            QueueDel(newPart);
     }
 
     private void DeleteChildParts(EntityUid parent, BodyPartComponent part)
