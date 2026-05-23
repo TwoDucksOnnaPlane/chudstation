@@ -21,7 +21,7 @@
 - type: species
   id: Felinid
   name: species-name-felinid
-  roundStart: true # Ratbite - re-enable felinids in character setup
+  roundStart: true # RatBite - we're chuds
   prototype: MobFelinid
   sprites: MobHumanSprites
   markingLimits: MobFelinidMarkingLimits
