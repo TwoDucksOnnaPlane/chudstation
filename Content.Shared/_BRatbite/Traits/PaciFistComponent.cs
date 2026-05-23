@@ -4,7 +4,9 @@
 
 namespace Content.Shared._BRatbite.Traits;
 
-[RegisterComponent]
+using Robust.Shared.GameStates;
+
+[RegisterComponent, NetworkedComponent]
 public sealed partial class PaciFistComponent : Component
 {
     [DataField]
@@ -12,4 +14,8 @@ public sealed partial class PaciFistComponent : Component
 
     [DataField]
     public float ShovePowerMultiplier = 0.75f;
+
+    // The client needs this for prediction so pacifist Paci-fist attacks do not
+    // run the normal harm feedback path before the server correction arrives.
+    public override bool SendOnlyToOwner => true;
 }

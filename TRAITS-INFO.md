@@ -6,95 +6,111 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Traits Info
 
-## Physical
-
-| Name | Description | Effect |
-|---|---|---|
-| Alcohol Tolerance | The body shrugs off visual effects from alcohol. | Reduces drunk visual scaling; does not prevent alcohol poisoning. |
-| Bionic Legs | One or more legs are replaced with advanced bionics. | Improves movement speed. |
-| Bionic Spinarette | A bioengineered wrist organ produces silk. | Grants sericulture silk production. |
-| Blindness | The character cannot see clearly. | Applies permanent blindness and starts with a white cane. |
-| Byond Your Prime | The character moves like older tile movement. | Applies tile movement. |
-| Deaf | The character cannot hear. | Applies deafness. |
-| Dermal Armor | Synthetic reinforced skin resists physical harm. | Reduces Blunt, Slash, and Piercing damage; increases Shock damage taken. |
-| Feeble | Injuries impair movement more severely. | Applies stronger slow-on-damage thresholds. |
-| Glass Jaw | The body enters critical condition sooner. | Lowers the Critical threshold. |
-| Hardened Lymphocytes | Treated marrow reduces radiation harm. | Adds flat Radiation damage reduction. |
-| Hemophilia | Blood clotting is impaired. | Bleeding lasts longer and Blunt damage is increased. |
-| High Pain Tolerance | The character cannot assess personal health reliably. | Hides the health alert and changes pain feedback behavior. |
-| Juggernaut | Heavy conditioning raises survivability. | Increases Critical and Dead thresholds by 50. |
-| Lightweight Drunk | Alcohol affects the character strongly. | Doubles booze strength. |
-| Light Step | The character moves quietly. | Reduces walk and sprint footstep volume. |
-| Liquor Lifeline | Alcohol acts as emergency healing. | Replaces the liver and slowly heals selected damage types while drunk. |
-| Lyre Bird | The character can mimic complex music. | Grants advanced singing and swappable instrument behavior. |
-| Marathoner | The character is trained for long chases. | Adds 50 stamina, increases running speed, and shortens get-up time. |
-| Monochromacy | The character perceives only black, white, and gray. | Applies a black-and-white overlay. |
-| Movement Impaired | The character needs a cane to move well. | Applies reduced movement speed and starts with a cane. |
-| Nanite Repair Drones | An IPC chassis repairs itself over time. | Slowly repairs Brute and Burn damage. |
-| Neurogenesis Imperfecta | The brain is incompatible with neural connectors and foreign bodies. | Blocks cloning, prevents MMI use, and makes brain transplants fail outside the original body. |
-| Osteogenesis Imperfecta | Bones break very easily. | Greatly lowers the Critical threshold. |
-| Parkour Training | The character is trained to move through obstacles. | Faster climbing, shorter slipping stun, and reduced contact slowdown. |
-| Paci-fist | A pacifist martial art focused on subduing opponents through range control. | Requires Pacifist. Bare punches deal stamina damage and pull opponents slightly closer; harm-grabbing stamina-crit opponents immediately applies a chokehold. Disabled by the same martial arts and glove blockers as PCT. |
-| PCT Training | Precise Combat Techniques improve unarmed attacks. | Adds 5 unarmed Blunt damage, rewards clean hit combos with faster punches, and locks punching for 2 seconds after misses or hitting objects. |
-| Platelet Factories | Bio-tailored organs improve long-term survivability. | Slowly repairs Brute and Burn damage while alive. |
-| Poor Vision | The character struggles to see far away. | Applies partial permanent blindness and starts with prescription glasses. |
-| Prybar Prosthetics | Reinforced arms can force restraints. | Grants prybar prosthetics behavior. |
-| Singer | The character can sing simple melodies. | Grants singing and basic instrument behavior. |
-| Snoring | The character snores while asleep. | Applies snoring. |
-| Steadfast | Injuries slow the character less than normal. | Applies milder slow-on-damage thresholds. |
-| Striking Calluses | Reinforced knuckles improve punches. | Adds 2 Blunt damage to unarmed strikes. |
-| Temperature Tolerance | The character tolerates cold environments better. | Adds temperature protection. |
-| Tenacity | The body resists critical injuries. | Raises the Critical threshold. |
-| Thieving | The character is deft at stealing. | Identifies pocketed items, steals faster, and uses the subtle thieving text behavior. |
-| Trap Avoider | The character unconsciously avoids floor traps. | Prevents triggering floor traps such as mines, tripwires, and mouse traps. |
-| Unrevivable | The character cannot be revived by defibrillator. | Applies unrevivable behavior while still allowing cloning when configured. |
-| Vigor | Endurance is enhanced. | Raises stamina, increases stamina regeneration, and reduces stamina cooldown. |
-| Voracious | The character eats and drinks quickly. | Doubles consumption speed. |
-| Wheelchair Bound | The character begins without usable legs. | Starts buckled to a wheelchair and applies leg paralysis. |
+This file documents the currently defined trait prototypes, their point cost, their player-facing gameplay effect, and the components or prototype constraints they apply.
 
 ## Mental
 
-| Name | Description | Effect |
-|---|---|---|
-| CPR Training | The character knows how to perform CPR. | Grants CPR training behavior. |
-| Experienced Surgeon | Surgery is a specialty. | Increases surgery speed to 2.3. |
-| Muted | The character cannot speak. | Applies muting. |
-| NanoTrasen Loyalty Training | The character starts with corporate conditioning. | Starts with a mindshield implant. |
-| Narcolepsy | The character randomly falls asleep. | Triggers sleep incidents at random intervals. |
-| Pacifist | The character cannot hurt living beings. | Applies pacification. |
-| Paracusia | The character hears sounds that are not real. | Plays hallucinated sounds at random intervals. |
-| Redshirt | The character succumbs to fatal injuries very quickly. | Greatly lowers the Dead threshold. |
-| Self-Aware | The character understands their body well. | Grants accurate self-examine health information. |
-| Social Anxiety | The character struggles with speech under pressure. | Applies social anxiety speech behavior. |
-| Surgery Training | The character has practical surgical training. | Increases surgery speed to 1.6. |
-| Will To Die | The character succumbs to fatal injuries sooner. | Lowers the Dead threshold. |
-| Will To Live | The character resists death longer. | Raises the Dead threshold. |
+| Name | Description | Cost | Gameplay Changes | Technical Changes |
+|---|---|---:|---|---|
+| CPR Training | At some point in your life, you have received training in how to perform CPR. | 3 | Allows CPR training behavior. | Adds CPRTraining. |
+| Experienced Surgeon | Surgery is your specialty. You are faster than most at your craft. This trait boosts your surgery speed to 2.3. | 3 | Sets surgery speed modifier to 2.3. | Adds SurgerySpeedModifier. |
+| Muted | You can't speak. | -1 | Prevents speaking. | Adds Muted. Component blacklist: BorgChassis. |
+| NanoTrasen Loyalty Training | You start with a mindshield implant. Normal mindshield rules apply. | 0 | Starts the character with a mindshield implant. | Adds LoyaltyTraining. |
+| Narcolepsy | You fall asleep randomly. | -1 | Randomly causes sleep incidents every 300-600 seconds for 10-30 seconds. | Adds Narcolepsy. |
+| Pacifist | You cannot attack or hurt any living beings. | -2 | Blocks direct harm against living targets unless another component explicitly allows the action. | Adds Pacified. |
+| Paracusia | You hear sounds that aren't really there. | -1 | Plays hallucinated sounds at random intervals. | Adds Paracusia. |
+| Redshirt | "They said this air would be breathable. Get in, get out again, and no one gets hurt. Something is pulling me up the hill. I look down in my red shirt. I look down in my red shirt." Reduces your damage threshold for becoming Dead by 100 points. | -8 | Greatly lowers the death threshold. | Adds WillToDie. Exclusive with WillToLive. Species blacklist: IPC. Component blacklist: BorgChassis. |
+| Self-Aware | You possess a keen intuition of your body and senses. You can accurately examine the severity of your wounds and burns like a health analyzer, and can gauge if you have toxin or airloss damage. | 2 | Adds accurate self-examine health information. | Adds SelfAware. |
+| Social Anxiety | You have crippling social anxiety, you're freaked out by affectionate things, such as hugs. | -1 | Applies social anxiety interaction effects. | Adds SocialAnxiety. |
+| Surgery Training | At some point in your life you acquired the knowledge and experience necessary for performing surgery effectively. This trait boosts your surgery speed to 1.6. | 3 | Sets surgery speed modifier to 1.6. | Adds SurgerySpeedModifier. |
+| Will To Die | You have an unusually weak "will to live", and will succumb to injuries sooner than others. Your damage threshold for becoming Dead is decreased by 15 points. | -1 | Lowers the death threshold. | Adds WillToDie. Exclusive with WillToLive. Species blacklist: IPC. Component blacklist: BorgChassis. |
+| Will To Live | You have an unusually strong "will to live", and will resist death more than others. Your damage threshold for becoming Dead is increased by 10 points. | 1 | Raises the death threshold. | Adds WillToLive. Exclusive with WillToDie, Redshirt. Species blacklist: IPC. Component blacklist: BorgChassis. |
+
+## Physical
+
+| Name | Description | Cost | Gameplay Changes | Technical Changes |
+|---|---|---:|---|---|
+| Alcohol Tolerance | Your body shrugs off the visual effects of booze. Drinks blur your vision far less, but this does not affect alcohol poisoning or how drunk you become. | 1 | Reduces drunk overlay strength; does not prevent alcohol poisoning. | Adds AlcoholTolerance. Exclusive with LightweightDrunk, LiquorLifeline. Species blacklist: Dwarf, IPC. Component blacklist: BorgChassis. |
+| Bionic Legs | One or more of your limbs have been replaced with an expensive, state of the art bionic. It could be either one made of highly realistic synthflesh, or a more obvious metal limb. This limb provides enhanced speed to it's user, allowing you to run away from situations faster or get to a place faster. | 2 | Improves movement through the BionicLegs movement system. | Adds BionicLegs. |
+| Bionic Spinarette | This vatgrown organ--trademarked and patented by the Quark Corporation--is marketed as a highly utilitarian enhancement, and sold in clinics all across known space. It consists of a module that is traditionally implanted right below the wrist, which absorbs bodily lipids to convert into all-natural silk. A small opening in the palm allows the user to 'spin' this thread. | 2 | Grants sericulture silk production action at hunger cost. | Adds Sericulture. Species blacklist: IPC, Arachnid. Component blacklist: BorgChassis. |
+| Blindness | You are legally blind, and can't see clearly past a few meters in front of you. | -3 | Applies permanent blindness and starts with a white cane. | Adds PermanentBlindness. Component whitelist: Blindable. Trait gear: WhiteCane. |
+| Deaf | You're completly deaf, you can't hear anything, including yourself! | -2 | Prevents hearing. | Adds Deaf. Component blacklist: BorgChassis. |
+| Dermal Armor | Your skin has been replaced with a flexible, yet sturdy, hard-polymer shell wrapped in a layer of synthetic flesh. Provides 3.5 flat reduction to Blunt, Slash, and Piercing damage, but you take 25% more Shock damage. | 6 | Reduces Blunt, Slash, and Piercing damage by 3.5; increases Shock damage taken by 25%. | Adds DamageProtectionBuff. |
+| Feeble | Your body responds poorly to injuries, making damage affect your movement more severely. For most species, this trait causes you to move 30% slower at 45 damage, and 54% slower at 65 damage. | -4 | Damage slows movement earlier and harder at 45/65 damage thresholds. | Adds SlowOnDamage. Exclusive with Steadfast. Species blacklist: Felinid, Tajaran. |
+| Glass Jaw | Your body is more fragile than others, resulting in a greater susceptibility to critical injuries. Your damage threshold for becoming Critical is decreased by 10 points. | -2 | Lowers the critical threshold. | Adds GlassJaw. Exclusive with Tenacity. Species blacklist: IPC. |
+| Hardened Lymphocytes | Your marrow has been treated with melanocyte-hardened stem cells that abate harm from radiation exposure. Effective up to 1 rad; suitable for light salvage and mining operations. | 4 | Adds flat Radiation damage reduction. | Adds DamageProtectionBuff. Species blacklist: IPC. Component blacklist: BorgChassis. |
+| Hemophilia | Your body's ability to form blood clots is impaired. You bleed for roughly twice as long, and you bruise more easily, taking 10% more Blunt damage. | -4 | Makes bleeding last longer and increases Blunt damage taken. | Adds Hemophilia. Species blacklist: IPC. Component blacklist: BorgChassis. |
+| High Pain Tolerance | You cannot assess your own health status. Your health alert is hidden, and pain feedback is unreliable. | -1 | Hides/impairs health-state feedback. | Adds PainNumbness. |
+| Inner peace | You are always in touch with your roots. And by your roots, I mean the center of the tile you're standing on. | -1 | Forces tile movement. | Adds TileMovement. |
+| Juggernaut | Your critical and death damage thresholds are increased by 50. | 8 | Raises crit/death survivability thresholds by 50 through JuggernautSystem. | Adds Juggernaut. Exclusive with GlassJaw, Tenacity, OsteogenesisImperfecta. Species blacklist: IPC. Component blacklist: BorgChassis. |
+| Lethargy | You become tired faster than others, making you more vulnerable to exhaustion and fatigue. Your stamina is decreased by 15 points. Your stamina regen per second is decreased by 0.6 points. Stamina regen now starts 3.75 seconds after taking stamina damage, instead of 3 seconds. | -4 | Lowers stamina and stamina recovery through LethargySystem. | Adds Lethargy. Exclusive with Vigor. Species blacklist: Felinid, Tajaran. Component blacklist: BorgChassis. |
+| Light Step | You move with a gentle step, which makes your footsteps quieter when not wearing any kind of shoes. | 2 | Reduces walking and sprinting footstep volume by 10. | Adds FootstepVolumeModifier. Species blacklist: Felinid, Tajaran. |
+| Lightweight drunk | Alcohol has a stronger effect on you. | -1 | Doubles booze strength. | Adds LightweightDrunk. |
+| Liquor Lifeline | Forget the doctor — just hit the bar for your "ethanol prescription"! While drunk, you slowly heal Brute, Heat, Shock, and Cold damage, scaling with how drunk you are. Your liver is replaced with a sturdy dwarven one, granting the benefits of alcohol tolerance. | 6 | While drunk, heals selected damage over time through LiquorLifelineSystem. | Adds LiquorLifeline. Exclusive with AlcoholTolerance. Species blacklist: IPC, Dwarf. Component blacklist: BorgChassis. |
+| Lyre Bird | Your talent for mimicry vastly exceeds the norms of others. You have the ability to perfectly imitate songs in their entirety. Be your own full symphony orchestra, jazz group, or metal band. | 3 | Grants singing plus swappable instrument behavior with percussion/program changes. | Adds HarpySinger, Instrument, SwappableInstrument. Exclusive with Muted. Included species: Harpy, IPC. |
+| Marathoner | You gain 50 stamina, run faster, and recover from prone positions slightly faster. | 10 | Adds 50 stamina, increases running speed, and improves prone get-up speed. | Adds Marathoner. Exclusive with Vigor, Lethargy. Species blacklist: IPC. Component blacklist: BorgChassis. |
+| Monochromacy | You are fully colorblind, everything you perceive ranges from blacks to whites. | -1 | Applies black-and-white overlay. | Adds BlackAndWhiteOverlay. |
+| Movement Impaired | You can't quite seem to walk very well without some assistance. Cane included. | -1 | Starts with a cane and reduces movement speed to 60%. | Adds MovementImpaired. Component blacklist: BorgChassis. Trait gear: Cane. |
+| Nanite Repair Drones | Your Chassis has Nanite Repair Drones coursing through it that respond to physical trauma. While not as quick as manual repair, these will cut down significantly on day to day maintainance. | 8 | IPC-only passive Brute/Burn repair over time. | Adds PlateletFactories. Species blacklist: Human, Chitinid, Oni, Vulpkanin, Vox, Diona, Moth, Goblin, Arachnid, Resomi, Harpy, Reptilian, Hydrakin, Rodentia, Dwarf, SlimePerson, Felinid, Tajaran. Component blacklist: BorgChassis. |
+| Neurogenesis Imperfecta | Your brain is incompatible with neural connectors, MMIs, cloning, and foreign bodies. | -10 | Blocks cloning/revival and prevents brain/MMI body transfer behavior. | Adds NeurogenesisImperfecta, Uncloneable, Unrevivable. Species blacklist: IPC. Component blacklist: BorgChassis. |
+| Osteogenesis Imperfecta | Also known as "brittle bone disease", people with this genetic disorder have bones that are easily broken, often simply by moving. This trait reduces your threshold for critical injury by 50 points. | -6 | Greatly lowers critical threshold by using GlassJaw with a larger crit decrease. | Adds GlassJaw. Exclusive with Tenacity. Species blacklist: IPC. Component blacklist: BorgChassis. |
+| PCT Training | Precise Combat Techniques training gives your unarmed strikes 5 extra Blunt damage. Consecutive clean hits against mobs make your punches faster, but missing or hitting objects leaves you unable to punch for 2 seconds. This training is incompatible with martial arts knowledge. | 5 | Unarmed-only combat training: bonus punch damage, faster accurate chains/parry handling, and recovery lockout on misses/objects. Blocked by martial arts/glove blockers. | Adds PctTraining. Component blacklist: MartialArtsKnowledge, KravMaga, BorgChassis. |
+| Paci-fist | A pacifist martial art designed to subdue with range control. Bare punches deal stamina damage and slightly pull opponents closer. Harm-grabbing stamina-crit opponents immediately applies a chokehold. Requires Pacifist and is incompatible with other martial arts. | 4 | Requires Pacifist. Barehand attacks deal only stamina damage, pull targets inward at 75% shove force, and allow instant chokehold on harm-grabbed stamina-crit targets. Blocked by martial arts/glove blockers. | Adds PaciFist, PacifismAllowedUnarmedCombat, PacifismAllowedGrab, InstantChokeholdOnStaminaCrit. Requires Pacifist. Exclusive with PctTraining. Component blacklist: MartialArtsKnowledge, KravMaga, BorgChassis. |
+| Parkour Training | Whether as a hobby, lifestyle, or professional training, you are trained in the discipline of parkour. You climb structures like tables [color=yellow]50%[/color] faster. Slipping leaves you stunned for [color=yellow]30%[/color] shorter. { -slippery-example } You gain a [color=yellow]50%[/color] resistance to slows from difficult terrain. { -terrain-example } | 5 | Halves climb delay, reduces slipping paralysis to 70%, and halves contact speed slowdown. | Adds ClimbDelayModifier, SlippableModifier, SpeedModifiedByContactModifier. |
+| Platelet Factories | Your body has been augmented with a series of bio-tailored organs that enhance long-term survivability. These organs attempt to keep you alive even in the face of advanced trauma, all the way up until—but not including—death. Your natural healing slowly repairs burn and brute damage types. | 6 | Passive Brute/Burn repair over time, reduced in crit. | Adds PlateletFactories. Exclusive with Hemophilia. Species blacklist: IPC. Component blacklist: BorgChassis. |
+| Prybar Prosthetics | Your arms have been reinforced with steel and hydraulics. You can force your way out of some unpleasant situations. | 2 | Allows prosthetic arms to pry out of restraints through PrybarProstheticsSystem. | Adds PrybarProsthetics. |
+| Short-sighted | Your eyes are not what they once were, you have difficulty seeing things far away without corrective glasses. | -1 | Applies partial permanent blindness and starts with prescription glasses. | Adds PermanentBlindness. Component whitelist: Blindable. Trait gear: ClothingEyesPrescriptionGlasses. |
+| Singer | You are naturally capable of singing simple melodies with your voice. | 1 | Grants basic singing/instrument behavior. | Adds HarpySinger, Instrument. Exclusive with Muted. Species blacklist: Harpy. |
+| Snoring | You will snore while sleeping. | -1 | Makes the character snore while asleep. | Adds Snoring. |
+| Steadfast | When others would buckle from the weight of your injuries, you still march forward unrelentingly. For most species, this reduces your movement slow: 25% at 60 damage becomes 17% at 70 damage, and 45% at 80 damage becomes 30% at 90 damage. | 3 | Damage slows movement later and less severely at 70/90 damage thresholds. | Adds SlowOnDamage. Exclusive with Feeble. Species blacklist: Felinid, Tajaran. Component blacklist: BorgChassis. |
+| Striking Calluses | An iconic enhancement from the world of cyber-enhanced martial arts. Bony dermal deposits (or hard plastic shells for prosthetics) reinforce your knuckles. Increases your unarmed strike base damage by 2, but provides no benefit to armed melee. | 2 | Adds 2 Blunt damage to barehand strikes. | Adds StrikingCalluses. Component blacklist: BorgChassis. |
+| Temperature Tolerance | You have a notable tolerance for lower temperatures. You can stand for extended periods in conditions just below freezing, like a walk-in fridge or the sunlit slopes of Glacier. | 1 | Improves cold/temperature protection through TemperatureProtection. | Adds TemperatureProtection. |
+| Tenacity | Whether it be through raw grit, willpower, or subtle bionic augmentations, you are hardier than others. Your damage threshold for becoming Critical is increased by 5 points. | 1 | Raises the critical threshold. | Adds Tenacity. Exclusive with GlassJaw, OsteogenesisImperfecta. Species blacklist: IPC. |
+| Thieving | You are deft with your hands, and talented at convincing people of their belongings. You can identify pocketed items and steal 50% faster. | 2 | Faster stealing, hidden-item identification, and subtle white stealing text behavior. | Adds Thieving. Species blacklist: Felinid. |
+| Trap Avoider | You possess a preternatural sense of traps, and will unconsciously avoid them. You will never trigger floor traps, such as land mines, tripwires, mouse traps (if you're small enough), etc. | 3 | Prevents floor trap triggering. | Adds TrapAvoider. Species blacklist: Felinid, Tajaran, Harpy. |
+| Unrevivable | You are unable to be revived by defibrillators. | -1 | Prevents defibrillator revival while still allowing cloning when configured. | Adds Unrevivable. |
+| Vigor | Whether by pure determination, fitness, or bionic augmentations, your endurance is enhanced. | 6 | Raises stamina, improves stamina regeneration, and reduces stamina cooldown. | Adds Vigor. Exclusive with Lethargy. Species blacklist: Oni, IPC. |
+| Voracious | Nothing gets between you and your food. Your endless consumption of food and drinks is twice as fast. | 1 | Doubles food/drink consumption speed. | Adds Voracious. Species blacklist: IPC. Component blacklist: BorgChassis. |
+| Wheelchair Bound | You cannot move without your wheelchair. Wheelchair included. | -3 | Starts buckled to a wheelchair with paralyzed legs. | Adds BuckleOnMapInit, LegsStartParalyzed, LegsParalyzed. Component blacklist: BorgChassis. |
 
 ## Speech
 
-| Name | Description | Effect |
-|---|---|---|
-| Accentless | The character lacks their usual species accent. | Removes the default species accent. |
-| Cowboy Accent | The character speaks with a cowboy accent. | Applies cowboy speech replacement. |
-| French Accent | The character speaks with a French accent. | Applies French speech replacement. |
-| Frontal Lisp | The character speaks with a lisp. | Applies frontal lisp speech replacement. |
-| German Accent | The character speaks with a German accent. | Applies German speech replacement. |
-| Italian Accent | The character speaks with an Italian accent. | Applies Italian speech replacement. |
-| Pathological Liar | The character struggles to tell the truth. | Applies liar speech behavior. |
-| Pirate Accent | The character speaks like a pirate. | Applies pirate speech replacement. |
-| Southern Drawl | The character speaks with a Southern drawl. | Applies Southern speech replacement. |
-| Spanish Accent | The character speaks with a Spanish accent. | Applies Spanish speech replacement. |
-| Stutter | The character speaks with a stutter. | Applies stuttering speech behavior. |
+| Name | Description | Cost | Gameplay Changes | Technical Changes |
+|---|---|---:|---|---|
+| Accentless | You don't have the accent that your species would usually have | 2 | Removes the normal species accent component behavior. | Adds Accentless. |
+| Bogan accent | You learned this from a mythical creature. | 1 | Applies bogan speech replacement. | Adds ReplacementAccent. |
+| British accent | You speak proper, unlike those bloody yanks. | 1 | Applies British speech replacement. | Adds ReplacementAccent. |
+| Cowboy accent | You speak with a distinct cowboy accent! | 1 | Applies cowboy speech replacement. | Adds ReplacementAccent. |
+| Dementia | I-... uh, what was this one about again? Oh thats right! You forget a lot sometimes | 1 | Applies dementia speech effects. | Adds ReplacementAccent. |
+| French accent | Your accent seems to have a certain «je ne sais quoi». | 1 | Applies French speech replacement. | Adds FrenchAccent. |
+| Frontal lisp | You thpeak with a lithp. | 2 | Applies frontal lisp speech replacement. | Adds FrontalLisp. |
+| German accent | You seem to come from space Germany. | 1 | Applies German speech replacement. | Adds GermanAccent. |
+| Italian accent | Mamma mia! You seem to have lived in space Italy! | 1 | Applies Italian speech replacement. | Adds ReplacementAccent. |
+| Medieval accent | Hark! Thy manner o' speech, 'tis most unusual! | 1 | Applies medieval speech replacement. | Adds MedievalAccent. |
+| New York accent | You speak with a thick New York accent. I'm fuckin' walkin' 'ere! | 1 | Applies New York speech replacement. | Adds ReplacementAccent. |
+| Pathological liar | You can hardly bring yourself to tell the truth. Sometimes you lie anyway. | 1 | Applies pathological liar speech behavior. | Adds ReplacementAccent. |
+| Pirate accent | You can't stop speaking like a pirate! | 1 | Applies pirate speech replacement. | Adds PirateAccent. |
+| Scottish accent | Your scottish pride is as strong as your accent! | 1 | Applies Scottish speech replacement. | Adds ReplacementAccent. |
+| Southern drawl | You have a different way of speakin'. | 1 | Applies Southern speech replacement. | Adds SouthernAccent. |
+| Spanish accent | Hola señor, donde esta la biblioteca. | 1 | Applies Spanish speech replacement. | Adds SpanishAccent. |
+| Stutter | You speak with a stutter. | 2 | Applies social anxiety speech behavior. | Adds StutteringAccent. |
 
 ## Languages
 
-| Name | Description | Effect |
-|---|---|---|
-| Elyran | The character knows Elyran. | Adds Elyran language knowledge. |
-| Foreigner | The character has limited local language fluency. | Restricts normal language use more heavily. |
-| Foreigner Light | The character has mildly limited local language fluency. | Restricts normal language use mildly. |
-| Freespeak | The character knows Freespeak. | Adds Freespeak language knowledge. |
-| Novu-Nederic | The character knows Novu-Nederic. | Adds Novu-Nederic language knowledge. |
-| Sign Language | The character knows sign language. | Adds sign language knowledge. |
-| Sol Common | The character knows Sol Common. | Adds Sol Common language knowledge. |
-| Tradeband | The character knows Tradeband. | Adds Tradeband language knowledge. |
+| Name | Description | Cost | Gameplay Changes | Technical Changes |
+|---|---|---:|---|---|
+| Elyran | Elyran Standard is the official tongue of the Republic of Elyra. Constructed using elements of Farsi - Arabic - and Turkish - influence from all three of these languages can be seen throughout its grammar and vocabulary. | 1 | Adds Elyran language knowledge. | Adds LanguageSpeaker. |
+| Foreigner | You can't understand the common language, Tau-Ceti Basic, and you require a translator at all times to talk. You have a translator to help you with your understanding and speaking, make sure to keep it charged. | -2 | Restricts normal language use heavily. | Adds ForeignerTrait. |
+| Foreigner Light | You understand the common language, Tau-Ceti Basic, but you can't quite speak it yet. You have a translator to help you with your basic understanding of the language, better keep it charged. | -1 | Restricts normal language use mildly. | Adds ForeignerTrait. |
+| Freespeak | A language of renegades and frontiersmen descending from various languages from Earth like Hindi combined into a multi-rooted jumble that sounds incoherent or even barbarian to non-native speakers. This language is the only common cultural identity for humans in the frontier. Speaking this language in itself boldly declares the speaker a free spirit. Often called 'Gutter' by Alliance citizens. | 1 | Adds Freespeak language knowledge. | Adds LanguageSpeaker. |
+| Novu-Nederic | Once the language of seafarers and merchants, now the voice of spacers, terraformers, and pioneers. Spoken in the New-Netherlands, this direct and pragmatic trade language carries the sharp consonants and clipped vowels of its old-world roots. Built on centuries of seafaring, land reclamation, and commerce, it thrives among those who shape entire worlds — just as their ancestors shaped the land from the sea. | 1 | Adds Novu-Nederic language knowledge. | Adds LanguageSpeaker. |
+| Sign Language | The use of body language, hand signs, and other forms of dexterous movements to get your point across. You can understand and use Tau-Ceti Basic Sign Language (TCB-SL). If you are mute for any reason, you can still communicate with sign language. | 1 | Adds sign language knowledge. | Adds LanguageSpeaker. |
+| Sol Common | With its roots in Mandarin Chinese - Common evolved as the official language of the Sol Alliance - with officials working to tie it together with a common tongue. It's spoken by state officials - taught in schools - and spoken by those who either feel a sense of national pride in the Alliance or otherwise fell sway to the culture. | 1 | Adds Sol Common language knowledge. | Adds LanguageSpeaker. |
+| Tradeband | Descended from latin and romance languages of old Earth - Tradeband remains the main tongue of the upper class of humanity. The language sounds elegant and well structured to most ears. It remains in popular use with traders - diplomats - and those seeking to hold onto a piece of a romantic past. | 1 | Adds Tradeband language knowledge. | Adds LanguageSpeaker. |
+
+## Uncategorized
+
+| Name | Description | Cost | Gameplay Changes | Technical Changes |
+|---|---|---:|---|---|
+| Deuteranopia | Whether through custom bionic eyes, random mutation, or being a Vulpkanin, you have red–green colour blindness. | 0 | Applies dog vision overlay behavior. | Adds DogVision. |
+| Ultraviolet Vision | Whether through custom bionic eyes, random mutation, or being a Harpy, you perceive the world with ultraviolet light. | 0 | Applies ultra vision overlay behavior. | Adds UltraVision. |
