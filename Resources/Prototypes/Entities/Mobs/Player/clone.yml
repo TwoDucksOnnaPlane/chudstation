@@ -25,6 +25,7 @@
   - DamageProtectionBuff
   - Deaf
   - DogVision
+  - EnhancedHearing
   - FootstepVolumeModifier
   - GlassJaw
   - HarpySinger
@@ -72,6 +73,8 @@
   - WillToDie
   - WillToLive
   - Juggernaut
+  - Kleptomania
+  - ScentTracker
   # job specific
   - BibleUser
   - CommandStaff

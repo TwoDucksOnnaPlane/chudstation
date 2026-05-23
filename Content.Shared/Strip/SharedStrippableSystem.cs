@@ -417,6 +417,22 @@ public abstract class SharedStrippableSystem : EntitySystem
         _doAfterSystem.TryStartDoAfter(doAfterArgs);
     }
 
+    public bool TryStartStripRemoveInventory(
+        EntityUid user,
+        EntityUid target,
+        EntityUid item,
+        string slot)
+    {
+        if (!_interactionSystem.InRangeAndAccessible(user, target))
+            return false;
+
+        if (!CanStripRemoveInventory(user, target, item, slot))
+            return false;
+
+        StartStripRemoveInventory(user, target, item, slot);
+        return true;
+    }
+
     /// <summary>
     ///     Removes the item from the target's inventory and inserts it in the user's active hand.
     /// </summary>
@@ -630,6 +646,23 @@ public abstract class SharedStrippableSystem : EntitySystem
         };
 
         _doAfterSystem.TryStartDoAfter(doAfterArgs);
+    }
+
+    public bool TryStartStripRemoveHand(
+        Entity<HandsComponent?> user,
+        Entity<HandsComponent?> target,
+        EntityUid item,
+        string handName,
+        StrippableComponent? targetStrippable = null)
+    {
+        if (!_interactionSystem.InRangeAndAccessible(user.Owner, target.Owner))
+            return false;
+
+        if (!CanStripRemoveHand(user.Owner, target, item, handName))
+            return false;
+
+        StartStripRemoveHand(user, target, item, handName, targetStrippable);
+        return true;
     }
 
     /// <summary>

@@ -33,3 +33,23 @@
   cost: -1
   components:
   - type: Snoring
+
+- type: trait
+  id: TrackingByScent
+  name: trait-tracking-by-scent-name
+  description: trait-tracking-by-scent-desc
+  category: Physical
+  cost: 2
+  speciesBlacklist:
+  - Vulpkanin
+  components:
+  - type: ScentTracker
+
+- type: trait
+  id: AllEars
+  name: trait-all-ears-name
+  description: trait-all-ears-desc
+  category: Physical
+  cost: 3
+  components:
+  - type: EnhancedHearing
