@@ -506,6 +506,9 @@ namespace Content.Shared.Preferences
             if (!protoManager.TryIndex(traitId, out var traitProto))
                 return new(this);
 
+            if (IsTraitExcludedForSpecies(traitProto))
+                return new(this);
+
             var category = traitProto.Category;
 
             // Category not found so dump it.
@@ -791,6 +794,9 @@ namespace Content.Shared.Preferences
                 if (!protoManager.TryIndex(trait, out var traitProto))
                     continue;
 
+                if (IsTraitExcludedForSpecies(traitProto))
+                    continue;
+
                 if (!traitProto.RequiredTraits.IsSubsetOf(result.ToHashSet()))
                     continue;
 
@@ -824,6 +830,13 @@ namespace Content.Shared.Preferences
             }
 
             return result;
+        }
+
+        private bool IsTraitExcludedForSpecies(TraitPrototype trait)
+        {
+            return trait.SpeciesBlacklist.Contains(Species) ||
+                   trait.ExcludedSpecies.Contains(Species) ||
+                   trait.IncludedSpecies.Count > 0 && !trait.IncludedSpecies.Contains(Species);
         }
 
         private static int GetTraitPointTotalForCategory(

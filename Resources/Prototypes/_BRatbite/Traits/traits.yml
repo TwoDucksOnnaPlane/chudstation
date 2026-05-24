@@ -17,6 +17,9 @@
   description: trait-pct-training-desc
   category: Physical
   cost: 5
+  mutuallyExclusiveTraits:
+  - PaciFist
+  - StrikingCalluses
   blacklist:
     components:
     - MartialArtsKnowledge
@@ -35,6 +38,7 @@
   - Pacifist
   mutuallyExclusiveTraits:
   - PctTraining
+  - StrikingCalluses
   blacklist:
     components:
     - MartialArtsKnowledge

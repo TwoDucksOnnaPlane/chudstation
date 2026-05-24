@@ -19,6 +19,7 @@ using Content.Server._EinsteinEngines.Language;
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Content.Shared.Whitelist;
@@ -63,9 +64,7 @@ public sealed class TraitSystem : EntitySystem
                 continue;
 
             // Begin Goobstation: Species trait support
-            if (traitPrototype.IncludedSpecies.Count > 0 && !traitPrototype.IncludedSpecies.Contains(args.Profile.Species) ||
-                traitPrototype.SpeciesBlacklist.Contains(args.Profile.Species) ||
-                traitPrototype.ExcludedSpecies.Contains(args.Profile.Species))
+            if (IsTraitExcludedForSpecies(traitPrototype, args.Profile.Species))
                 continue;
             // End Goobstation: Species trait support
 
@@ -107,5 +106,12 @@ public sealed class TraitSystem : EntitySystem
                 checkActionBlocker: false,
                 handsComp: handsComponent);
         }
+    }
+
+    private static bool IsTraitExcludedForSpecies(TraitPrototype trait, ProtoId<SpeciesPrototype> species)
+    {
+        return trait.SpeciesBlacklist.Contains(species) ||
+               trait.ExcludedSpecies.Contains(species) ||
+               trait.IncludedSpecies.Count > 0 && !trait.IncludedSpecies.Contains(species);
     }
 }

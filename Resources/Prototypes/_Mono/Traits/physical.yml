@@ -270,6 +270,9 @@
   description: trait-striking-calluses-desc
   category: Physical
   cost: 2
+  mutuallyExclusiveTraits:
+  - PctTraining
+  - PaciFist
   blacklist:
     components:
     - BorgChassis
