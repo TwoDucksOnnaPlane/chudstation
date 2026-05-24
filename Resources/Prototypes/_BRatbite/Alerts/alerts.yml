@@ -1,0 +1,7 @@
+- type: alert
+  id: MindShielded
+  icons:
+    - sprite: /Textures/Interface/Actions/actions_fakemindshield.rsi
+      state: icon-on
+  name: alerts-mindshielded-name
+  description: alerts-mindshielded-desc
