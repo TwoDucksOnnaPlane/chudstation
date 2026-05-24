@@ -17,16 +17,64 @@
   - EncryptionKeyHolder # Goobstation
   # traits
   # - LegsParalyzed (you get healed)
+  - AlcoholTolerance
   - BlackAndWhiteOverlay
+  - BionicLegs
+  - ClimbDelayModifier
+  - CPRTraining
+  - DamageProtectionBuff
+  - Deaf
+  - DogVision
+  - EnhancedHearing
+  - FootstepVolumeModifier
+  - GlassJaw
+  - HarpySinger
+  - Hemophilia
+  - Instrument
   - LightweightDrunk
+  - Lethargy
+  - LiquorLifeline
+  - LoyaltyTraining
+  - Marathoner
+  - MovementImpaired
   - Muted
   - Narcolepsy
+  - NeurogenesisImperfecta
+  - NeurogenesisImperfectaBrain
+  - InstantChokeholdOnStaminaCrit
+  - PaciFist
+  - PacifismAllowedGrab
+  - PacifismAllowedUnarmedCombat
   - Pacified
   - PainNumbness
   - Paracusia
+  - PctTraining
   - PermanentBlindness
+  - PlateletFactories
+  - PrybarProsthetics
+  - SelfAware
+  - Sericulture
+  - SlowOnDamage
   - Snoring
+  - SocialAnxiety
+  - SlippableModifier
+  - SpeedModifiedByContactModifier
+  - StrikingCalluses
+  - SurgerySpeedModifier
+  - SwappableInstrument
+  - Tenacity
+  - TemperatureProtection
+  - TileMovement
+  - TrapAvoider
+  - UltraVision
   - Unrevivable
+  - Vigor
+  - Voracious
+  - WillToDie
+  - WillToLive
+  - Juggernaut
+  - Kleptomania
+  - ScentTracker
   # job specific
   - BibleUser
   - CommandStaff
@@ -45,6 +93,7 @@
   - FrontalLisp
   - GermanAccent
   - LizardAccent
+  - MedievalAccent
   - MobsterAccent
   - MonkeyAccent
   - MothAccent
