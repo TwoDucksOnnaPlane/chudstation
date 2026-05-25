@@ -385,8 +385,9 @@ namespace Content.Client.Paper.UI
             }
             WrittenTextLabel.SetMessage(msg, _allowedTags, DefaultTextColor);
 
-            WrittenTextLabel.Visible = !isEditing && state.Text.Length > 0;
-            BlankPaperIndicator.Visible = !isEditing && state.Text.Length == 0;
+            var isEmpty = (state.Text.Length == 0 && state.Strokes.Count == 0);
+            WrittenTextLabel.Visible = !isEditing && !isEmpty;
+            BlankPaperIndicator.Visible = !isEditing && isEmpty;
 
             StampDisplay.RemoveAllChildren();
             StampDisplay.RemoveStamps();
